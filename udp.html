@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:500,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+
+
+</head>
+
+<body>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <center>
+                <h2>Andi Rusmiati</h2>
+            </center>
+            <a href="home.html"><i class="fa fa-home"></i><span>Home</span></a>
+            <a href="about.html"><i class="fa fa-user"></i><span>About</span></a>
+            <a href="network.html"><i class="fa fa-desktop"></i><span>Computer Network</span></a>
+        </div>
+
+
+        <div class="main-content">
+            <section class="cn section shadow-dark">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="section-title padd-15">
+                            <h2>Transport Layer</h2>
+                            <center><img src="icon/icon2.jpg" alt=""></center>
+                            <p>Model Referensi Jaringan TCP / IP adalah standar komunikasi data yang dipergunakan oleh komunitas dalam proses tukar data dari komputer ke komputer yang lain dalam jaringan komputer. Protocol ini merupakan :</p>
+                            <p>1. Kumpulan protocol ( Protocol suite )<br> 2. Protocol yang paling banyak digunakan<br> 3. Standar jaringan terbuka bersifat independen terhadap mekanisme transport jaringan fisik yang digunakan.</p>
+
+
+
+                            <p><i><b>Mengapa Model Referensi dibuat Berlayer?</b></i></p>
+                            <p>Lapisan-Lapisan pada OSI Layer dibuat dengan tujuan agar setiap paket data dalam sebuah jaringan bisa melewati layer tersebut sebelum pada akhirnya bisa saling terkoneksi. Model OSI Layer ini beroperasi dengan satu prinsip
+                                dasar, yaitu setiap layer menangani pekerjaan spesifik, dan kemudian meneruskan data ke layer berikutnya sebelum akhirnya terkoneksi satu sama lain. Maka dari itu, setiap layer memiliki fungsi yang berbeda.
+                            </p>
+
+
+                            <p><i><b>Apa Fungsi Transport Layer?</b></i></p>
+                            <p>Sesuai dengan namanya, tansport layer merupakan lapisan OSI yang memilki tugas sebagai pengantar. Fungsi utama dari transport layer pada lapisan OSI ini adalah :</p>
+                            <p>1. Memecah data ke dalam paket–paket data.<br>2. Mentransmisikan data dari session layer menuju network layer, maupun sebaliknya. <br>3. Membuat penomoran pada paket – paket data, sehingga nantinya dapat disusun kembali dengan
+                                mudah.
+                                <br>4. Melakukan proses transmisi ulang pada paket data yang hilang.</p>
+                            <p>Berkat adanya transport layer ini, maka setiap data bisa saling berjalan dari server menuju clientnya dengan lancar tanpa adanya gangguan. </p>
+
+                            <h4>Port Number</h4>
+                            <hr>
+                            <p>Port Number adalah cara untuk mengidentifikasi proses tertentu ke mana Internet atau pesan jaringan lainnya akan diteruskan ketika tiba di server . Port number pada jaringan komputer merupakan angka biner sepanjang 16 bit yang
+                                berfungsi sebagai nomor untuk layanan yang digunakan didalam jaringan komputer. Port Number pertama kali dikenalkan oleh pasangan protokol TCP (Transmission Control Protocol) dan UDP (User Datagram Protocol). Protokol TCP
+                                dan UDP merupakan protokol yang telah ada sejak jaringan komputer diciptakan. Kedua pada tersebut berada pada lapisan Transport Layer. Port Number ini diteruskan secara logis antara lapisan transport klien dan server dan
+                                secara fisik antara lapisan transport dan lapisan Protokol Internet dan diteruskan. Misalnya, permintaan dari klien (mungkin atas nama Anda di PC Anda) ke server di Internet dapat meminta file dilayani dari server atau
+                                proses File Transfer Protocol (FTP) host itu. Untuk meneruskan permintaan Anda ke proses FTP di server jauh, lapisan perangkat lunak Transmission Control Protocol ( TCP ) di komputer Anda mengidentifikasi nomor port 21
+                                (yang secara konvensi dikaitkan dengan permintaan FTP) di port 16-bit bilangan bulat angka yang ditambahkan ke permintaan Anda. Di server, lapisan TCP akan membaca Port Number 21 dan meneruskan permintaan Anda ke program
+                                FTP di server. Beberapa layanan atau proses secara konvensional menetapkan Port Number permanen. Ini dikenal sebagai Port Number yang terkenal. Dalam kasus lain, Port Number ditetapkan sementara (selama permintaan dan penyelesaiannya)
+                                dari berbagai Port Number yang ditetapkan. Ini disebut Port Number sementara.</p>
+
+                            <h4>User Datagram Protocol (UDP)</h4>
+                            <hr>
+                            <p>UDP adalah transport layer yang tidak handal (unreliable), connectionless dan merupakan kebalikan dari transport layer TCP. Dengan menggunakan UDP, setiap aplikasi socket dapat mengirimkan paket-paket yang berupa datagram.
+                                Istilah datagram diperuntukkan terhadap paket dengan koneksi yang tidak handal ( unreliable service ). Koneksi yang handal selalu memberikan keterangan apabila pengiriman data gagal, sedangkan koneksi yang tidak handal
+                                tidak akan mengirimkan keterangan meski pengiriman data gagal. UDP memungkinkan pengguna untuk bisa berkomunikasi antar komputer tanpa perlu ada koneksi antara komputer yang menjadi host.Port dalam UDP menggunakan 16-bit
+                                integer, port – port yang bisa digunakan adalah antara 1 sampai 65535. Port – port yang digunakan dibagi menjadi 3 bagian yaitu well-known port ( antara 1 – 1023), registered port ( 1024 – 49151 ) dan ephemeral port ( 49152
+                                – 65535 ).</p>
+                            <p><i><b>Bagaimana Prinsip Kerja UDP?</b></i></p>
+                            <p>UDP memiliki sebuah saluran (channel) yang berguna untuk menghubungkan host antar host untuk saling berkirim informasi. Channel ini kemudian disebut dengan port UDP. Agar dapat terhubung dengan protokol UDP, aplikasi pada komputer
+                                terlebih dahulu perlu menyediakan alamat IP serta nomor port UDP dari host yang ingin dituju. Adapun fungsi UDP yaitu:</p>
+                            <p>1. Cocok untuk mengirim informasi yang membutuhkan kecepatan daripada keandalan, seperti streaming video atau audio.<br>2. Salah satu jenis protokol adalah ringan, artinya dapat secara efektif menggunakan profesor dan sumber
+                                daya memori, dan bahkan dapat menyimpannya. Jika protokolnya ringan, ia dapat menjalankan fungsi tertentu dengan bertukar pesan, misalnya dalam menanyakan nama dalam DNS. <br>3. UDP dapat mengimplementasikan layanan reliabilitas,
+                                artinya protokol ini dapat memfasilitasi layanan pertukaran data secara andal. Contoh umumnya ditemukan di TFTP (Trivial File Transfer Protocol), dan NFS. <br>4. Tidak memerlukan keandalan, misalnya hanya dalam Routing
+                                Information Protocol (RIP). <br> 5. Dapat menyiarkan siaran karena tidak perlu koneksi terlebih dahulu, dengan host yang lebih spesifik. Paket data dapat dikirim dengan beberapa tujuan yang ditangani dalam multicast atau
+                                disiarkan.
+                            </p><br>
+                            <center><img src="icon/udp.jpeg" alt=""></center>
+                            <p>Port UDP ini berguna sebagai sebuah multiplexed message queue. Artinya, port UDP tersebut kemudian mampu bekerja dengan menerima beberapa pesan secara bersamaan. Setiap port UDP memiliki identifikasi dengan nomor yang unik,
+                                namun memiliki pembagian tersendiri seperti yang telah dijelaskan sebelumnya.</p>
+
+                            <h4>Checksum</h4>
+                            <hr>
+                            <p>Checksum adalah skema kesalahan-deteksi sederhana di mana setiap pesan yang dikirim yang menghasilkan nilai numeric berdasarkan byte dalam pesan. Pengirim menempatkan nilai yang dihitung dalam pesan (biasanya di header pesan
+                                ) dan mengirimkan nilai pada pesan. Penerima menerapkan rumus yang sama untuk masing-masing menerima pesan dan memeriksa untuk memastikan nilai numeric adalah sama. Jika tidak, penerima dapat mengasumsikan bahwa pesan telah
+                                rusak dalam transmisi.</p>
+                            <p><i><b>Bagaimana Cara Kerja Checksum?</b></i></p>
+                            <p>Pada Metode checksum, pengecekan dilakukan dengan melakukan penjumlahan pada sekumpulan data dan kemudian mengcomplement jumlah tersebut, kemudian hasil complement tersebut/checksum ditambahkan pada data sebagai sebuah karakter.
+                                Kemudian pada reciever, akan dihitung ulang checksum-nya dan dilakukan perbandingan nilai/jumlah data yang dikirimkan dengan checksum. Bila terjadi perbedaan nilai antara kedua nilai ini, maka terjadi kesalahan/error dalam
+                                pengiriman data. Pada dasarnya metode ini mirip dengan parity check, perbedaannya adalah jumlah bit pada sums lebih besar dan hasil dari penjumlahan data dengan checksum harus</p>
+                            <p><b>Contoh</b></p>
+                            <p>Misalkan blok data 16 bit di bawah ini akan dikirim menggunakan checksum 8 bit<br></p>
+
+                            <p>10101001&nbsp; 00111001</p>
+
+                            <p>Data diatas ditambahkan dengan menggunakan 1’s complement</p>
+
+                            <p>&nbsp; &nbsp; 10101001</p>
+                            <p>&nbsp; &nbsp; 00111001</p>
+                            <p>&nbsp; &nbsp; ----------+</p>
+                            <p>&nbsp; &nbsp; 11100010</p>
+                            <p><b>&nbsp;00011101 --> (1's complement) Checksum </b></p>
+
+                            <p>Maka bentuk data yang dikirimkan adalah <b>10101001 001110011 00011101</b></p>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
