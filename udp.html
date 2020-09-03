@@ -75,8 +75,8 @@
                             <hr>
                             <p>UDP adalah transport layer yang tidak handal (unreliable), connectionless dan merupakan kebalikan dari transport layer TCP. Dengan menggunakan UDP, setiap aplikasi socket dapat mengirimkan paket-paket yang berupa datagram.
                                 Istilah datagram diperuntukkan terhadap paket dengan koneksi yang tidak handal ( unreliable service ). Koneksi yang handal selalu memberikan keterangan apabila pengiriman data gagal, sedangkan koneksi yang tidak handal
-                                tidak akan mengirimkan keterangan meski pengiriman data gagal. UDP memungkinkan pengguna untuk bisa berkomunikasi antar komputer tanpa perlu ada koneksi antara komputer yang menjadi host.Port dalam UDP menggunakan 16-bit
-                                integer, port – port yang bisa digunakan adalah antara 1 sampai 65535. Port – port yang digunakan dibagi menjadi 3 bagian yaitu well-known port ( antara 1 – 1023), registered port ( 1024 – 49151 ) dan ephemeral port ( 49152
+                                tidak akan mengirimkan keterangan meski pengiriman data gagal. UDP memungkinkan pengguna untuk bisa berkomunikasi antar komputer tanpa perlu ada koneksi antara komputer yang menjadi host. Port dalam UDP menggunakan 16-bit
+                                integer, port–port yang bisa digunakan adalah antara 1 sampai 65535. Port – port yang digunakan dibagi menjadi 3 bagian yaitu well-known port ( antara 1 – 1023), registered port ( 1024 – 49151 ) dan ephemeral port ( 49152
                                 – 65535 ).</p>
                             <p><i><b>Bagaimana Prinsip Kerja UDP?</b></i></p>
                             <p>UDP memiliki sebuah saluran (channel) yang berguna untuk menghubungkan host antar host untuk saling berkirim informasi. Channel ini kemudian disebut dengan port UDP. Agar dapat terhubung dengan protokol UDP, aplikasi pada komputer
@@ -99,7 +99,7 @@
                             <p><i><b>Bagaimana Cara Kerja Checksum?</b></i></p>
                             <p>Pada Metode checksum, pengecekan dilakukan dengan melakukan penjumlahan pada sekumpulan data dan kemudian mengcomplement jumlah tersebut, kemudian hasil complement tersebut/checksum ditambahkan pada data sebagai sebuah karakter.
                                 Kemudian pada reciever, akan dihitung ulang checksum-nya dan dilakukan perbandingan nilai/jumlah data yang dikirimkan dengan checksum. Bila terjadi perbedaan nilai antara kedua nilai ini, maka terjadi kesalahan/error dalam
-                                pengiriman data. Pada dasarnya metode ini mirip dengan parity check, perbedaannya adalah jumlah bit pada sums lebih besar dan hasil dari penjumlahan data dengan checksum harus</p>
+                                pengiriman data. Pada dasarnya metode ini mirip dengan parity check, perbedaannya adalah jumlah bit pada sums lebih besar dan hasil dari penjumlahan data dengan checksum harus nol(0). Jika hasil penjumlahan datanya tidak nol berarti data tidak valid.</p>
                             <p><b>Contoh</b></p>
                             <p>Misalkan blok data 16 bit di bawah ini akan dikirim menggunakan checksum 8 bit<br></p>
 
