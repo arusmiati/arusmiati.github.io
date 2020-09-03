@@ -66,7 +66,7 @@
                                 berfungsi sebagai nomor untuk layanan yang digunakan didalam jaringan komputer. Port Number pertama kali dikenalkan oleh pasangan protokol TCP (Transmission Control Protocol) dan UDP (User Datagram Protocol). Protokol TCP
                                 dan UDP merupakan protokol yang telah ada sejak jaringan komputer diciptakan. Kedua pada tersebut berada pada lapisan Transport Layer. Port Number ini diteruskan secara logis antara lapisan transport klien dan server dan
                                 secara fisik antara lapisan transport dan lapisan Protokol Internet dan diteruskan. Misalnya, permintaan dari klien (mungkin atas nama Anda di PC Anda) ke server di Internet dapat meminta file dilayani dari server atau
-                                proses File Transfer Protocol (FTP) host itu. Untuk meneruskan permintaan Anda ke proses FTP di server jauh, lapisan perangkat lunak Transmission Control Protocol ( TCP ) di komputer Anda mengidentifikasi nomor port 21
+                                proses File Transfer Protocol (FTP) host itu. Untuk meneruskan permintaan Anda ke proses FTP di server jauh, lapisan perangkat lunak Transmission Control Protocol (TCP) di komputer Anda mengidentifikasi nomor port 21
                                 (yang secara konvensi dikaitkan dengan permintaan FTP) di port 16-bit bilangan bulat angka yang ditambahkan ke permintaan Anda. Di server, lapisan TCP akan membaca Port Number 21 dan meneruskan permintaan Anda ke program
                                 FTP di server. Beberapa layanan atau proses secara konvensional menetapkan Port Number permanen. Ini dikenal sebagai Port Number yang terkenal. Dalam kasus lain, Port Number ditetapkan sementara (selama permintaan dan penyelesaiannya)
                                 dari berbagai Port Number yang ditetapkan. Ini disebut Port Number sementara.</p>
@@ -74,10 +74,10 @@
                             <h4>User Datagram Protocol (UDP)</h4>
                             <hr>
                             <p>UDP adalah transport layer yang tidak handal (unreliable), connectionless dan merupakan kebalikan dari transport layer TCP. Dengan menggunakan UDP, setiap aplikasi socket dapat mengirimkan paket-paket yang berupa datagram.
-                                Istilah datagram diperuntukkan terhadap paket dengan koneksi yang tidak handal ( unreliable service ). Koneksi yang handal selalu memberikan keterangan apabila pengiriman data gagal, sedangkan koneksi yang tidak handal
+                                Istilah datagram diperuntukkan terhadap paket dengan koneksi yang tidak handal (unreliable service). Koneksi yang handal selalu memberikan keterangan apabila pengiriman data gagal, sedangkan koneksi yang tidak handal
                                 tidak akan mengirimkan keterangan meski pengiriman data gagal. UDP memungkinkan pengguna untuk bisa berkomunikasi antar komputer tanpa perlu ada koneksi antara komputer yang menjadi host. Port dalam UDP menggunakan 16-bit
-                                integer, port–port yang bisa digunakan adalah antara 1 sampai 65535. Port – port yang digunakan dibagi menjadi 3 bagian yaitu well-known port ( antara 1 – 1023), registered port ( 1024 – 49151 ) dan ephemeral port ( 49152
-                                – 65535 ).</p>
+                                integer, port–port yang bisa digunakan adalah antara 1 sampai 65535. Port – port yang digunakan dibagi menjadi 3 bagian yaitu well-known port (antara 1 – 1023), registered port (1024 – 49151) dan ephemeral port (49152
+                                – 65535).</p>
                             <p><i><b>Bagaimana Prinsip Kerja UDP?</b></i></p>
                             <p>UDP memiliki sebuah saluran (channel) yang berguna untuk menghubungkan host antar host untuk saling berkirim informasi. Channel ini kemudian disebut dengan port UDP. Agar dapat terhubung dengan protokol UDP, aplikasi pada komputer
                                 terlebih dahulu perlu menyediakan alamat IP serta nomor port UDP dari host yang ingin dituju. Adapun fungsi UDP yaitu:</p>
@@ -93,8 +93,7 @@
 
                             <h4>Checksum</h4>
                             <hr>
-                            <p>Checksum adalah skema kesalahan-deteksi sederhana di mana setiap pesan yang dikirim yang menghasilkan nilai numeric berdasarkan byte dalam pesan. Pengirim menempatkan nilai yang dihitung dalam pesan (biasanya di header pesan
-                                ) dan mengirimkan nilai pada pesan. Penerima menerapkan rumus yang sama untuk masing-masing menerima pesan dan memeriksa untuk memastikan nilai numeric adalah sama. Jika tidak, penerima dapat mengasumsikan bahwa pesan telah
+                            <p>Checksum adalah skema kesalahan-deteksi sederhana di mana setiap pesan yang dikirim yang menghasilkan nilai numeric berdasarkan byte dalam pesan. Pengirim menempatkan nilai yang dihitung dalam pesan (biasanya di header pesan) dan mengirimkan nilai pada pesan. Penerima menerapkan rumus yang sama untuk masing-masing menerima pesan dan memeriksa untuk memastikan nilai numeric adalah sama. Jika tidak, penerima dapat mengasumsikan bahwa pesan telah
                                 rusak dalam transmisi.</p>
                             <p><i><b>Bagaimana Cara Kerja Checksum?</b></i></p>
                             <p>Pada Metode checksum, pengecekan dilakukan dengan melakukan penjumlahan pada sekumpulan data dan kemudian mengcomplement jumlah tersebut, kemudian hasil complement tersebut/checksum ditambahkan pada data sebagai sebuah karakter.
