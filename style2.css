@@ -474,7 +474,7 @@ nav {
 
 @media (max-width: 1199px) {
     .section {
-        margin-left: 5vh;
+        margin-left: 4vh;
     }
     .about .about-content .profil .info-item p span {
         display: block;
@@ -486,6 +486,7 @@ nav {
     }
     .sidebar {
         width: 80px;
+        position: fixed;
     }
     .sidebar a i {
         color: #443653;
@@ -561,6 +562,8 @@ nav {
     .about-content {
         margin-left: 0;
     }
+    .sidebar{
+        position: fixed;
 }
 
 @media (max-width:700px) {
