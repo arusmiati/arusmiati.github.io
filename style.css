@@ -533,6 +533,7 @@ nav {
     }
     .section {
         margin-left: 80px;
+        height: auto;
     }
     .about .about-content .profil .info-item p span {
         display: block;
