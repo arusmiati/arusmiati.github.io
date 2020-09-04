@@ -474,7 +474,7 @@ nav {
 
 @media (max-width: 1199px) {
     .section {
-        margin-left: 12vh;
+        margin-left: 80px;
     }
     .about .about-content .profil .info-item p span {
         display: block;
