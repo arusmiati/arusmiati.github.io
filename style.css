@@ -502,9 +502,7 @@ nav {
         flex: 0 0 50%;
         max-width: 50%;
     }
-    .network {
-        height: 125vh;
-    }
+    
     .home {
         height: 100px;
     }
