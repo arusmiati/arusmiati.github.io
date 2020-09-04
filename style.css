@@ -30,7 +30,7 @@ body {
     background-color: #ececec;
     display: block;
     padding: 0 30px;
-    margin-left: 40vh;
+    margin-left: 30vh;
     top: 0;
     bottom: 0;
     right: 0;
@@ -475,7 +475,6 @@ nav {
 @media (max-width: 1199px) {
     .section {
         margin-left: 80px;
-        height : 100vh;
     }
     .about .about-content .profil .info-item p span {
         display: block;
@@ -503,7 +502,9 @@ nav {
         flex: 0 0 50%;
         max-width: 50%;
     }
-    
+    .network {
+        height: 125vh;
+    }
     .home {
         height: 100px;
     }
@@ -515,9 +516,15 @@ nav {
         margin-top: 3vh;
         margin-bottom: 3vh;
     }
+    .about {
+        height: 180vh;
+    }
 }
 
 @media (max-width:767px) {
+    .about {
+        height: 250vh;
+    }
     h3 {
         text-align: left;
     }
@@ -585,5 +592,8 @@ nav {
     }
     .home {
         height: 100vh;
+    }
+    .about {
+        height: 420vh;
     }
 }
