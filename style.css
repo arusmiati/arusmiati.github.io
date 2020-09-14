@@ -22,6 +22,27 @@ body {
     font-weight: 400;
 }
 
+.cn ol li {
+    margin-top: 10px;
+    margin-left: 35px;
+}
+
+.cn ol p {
+    margin-left: 35px;
+    margin-top: 0px;
+}
+
+.cn ul li {
+    margin-left: 40px;
+}
+
+.cn h4,
+.cn p,
+.cn h2,
+hr {
+    margin-left: 20px;
+}
+
 .section .udp {
     min-height: 500vh;
 }
@@ -30,7 +51,7 @@ body {
     background-color: #ececec;
     display: block;
     padding: 0 30px;
-    margin-left: 30vh;
+    margin-left: 35vh;
     top: 0;
     bottom: 0;
     right: 0;
@@ -260,12 +281,9 @@ body {
     left: -7px;
 }
 
-.udp .container {
-    min-height: 1000vh;
-}
-
 .network .container {
     padding-bottom: 40px;
+    min-height: 100vh;
 }
 
 .network-item {
@@ -273,6 +291,7 @@ body {
     max-width: 33.33%;
     margin-bottom: 30px;
     margin-left: 30px;
+    height: 50vh;
 }
 
 .network-item-inner {
@@ -457,10 +476,6 @@ nav {
     padding-left: 10px;
 }
 
-.home {
-    height: 100vh;
-}
-
 .cn h4,
 .cn p {
     margin-top: 20px;
@@ -473,6 +488,12 @@ nav {
 }
 
 @media (max-width: 1199px) {
+    .cn h4,
+    .cn p,
+    .cn h2,
+    hr {
+        margin-left: 0px;
+    }
     .section {
         margin-left: 80px;
     }
@@ -495,18 +516,16 @@ nav {
         padding: 20px 0;
         margin-left: -10px;
     }
-    .network-item,
+    .network-item {
+        -ms-flex: 0 0 40%;
+        flex: 0 0 40%;
+        max-width: 40%;
+    }
     .profil,
     .education {
         -ms-flex: 0 0 50%;
         flex: 0 0 50%;
         max-width: 50%;
-    }
-    .network {
-        height: 125vh;
-    }
-    .home {
-        height: 100px;
     }
     .section .cn {
         min-width: 1000vh;
@@ -516,20 +535,33 @@ nav {
         margin-top: 3vh;
         margin-bottom: 3vh;
     }
-    .about {
-        height: 180vh;
+    .cn ol li,
+    .cn ol p {
+        margin-left: 15px;
     }
 }
 
 @media (max-width:767px) {
-    .about {
-        height: 250vh;
+    .network-title {
+        font-size: 12px;
+    }
+    .network-info span {
+        font-size: 10px;
+    }
+    .network-info {
+        margin-bottom: 2vh;
+    }
+    .network-date {
+        border-radius: 5px;
+        color: #fff;
+        background-color: #504e70;
+        font-weight: 600;
+        font-size: 8px;
+        left: 8px;
+        bottom: 8px;
     }
     h3 {
         text-align: left;
-    }
-    .home {
-        height: 100vh;
     }
     .section {
         margin-left: 80px;
@@ -551,8 +583,12 @@ nav {
         flex: 0 0 100%;
         max-width: 100%;
     }
+    .network-item {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
     .network {
-        height: 120vh;
         -ms-flex: 0 0 100%;
         flex: 0 0 100%;
         max-width: 100%;
@@ -575,23 +611,24 @@ nav {
 }
 
 @media (max-width:700px) {
-    .network-item,
     .about-content {
-        -ms-flex: 0 0 90%;
-        flex: 0 0 90%;
-        max-width: 90%;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
     }
-    .network {
-        height: 138vh;
-    }
-    .network-info p,
-    .network-info span {
-        font-size: 15px;
+    .network-item {
+        flex: 0 0 80%;
+        -ms-flex: 0 0 80%;
+        max-width: 80%;
+        margin-bottom: 20vh;
     }
     .cn img {
         width: 200px;
     }
-    .home {
-        height: 100vh;
+}
+
+@media (max-width: 351px) {
+    .network-item {
+        margin-bottom: 0px;
     }
-    
+}
