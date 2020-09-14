@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>Transmission Control Protocol</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:500,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+
+
+</head>
+
+<body>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <center>
+                <h2>Andi Rusmiati</h2>
+            </center>
+            <a href="index.html"><i class="fa fa-home"></i><span>Home</span></a>
+            <a href="about.html"><i class="fa fa-user"></i><span>About</span></a>
+            <a href="network.html"><i class="fa fa-desktop"></i><span>Computer Network</span></a>
+        </div>
+
+
+        <div class="main-content">
+            <section class="cn section shadow-dark">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="section-title padd-15">
+                            <h2>Transmission Control Protocol</h2><br>
+                            <center><img src="icon/tcp.jpg" alt=""></center>
+                            <h4>Model Referensi TCP/IP</h4>
+                            <hr>
+                            <p>Pada saat kita memulai langkah ke dalam ilmu jaringan komputer, hal yang pertama kali kita pelajari biasanya adalah TCP/IP. Agar komunikasi dan pertukaran informasi bisa terjalin dengan baik, dibutuhkan bahasa sama. Walaupun
+                                merek host jaringan tersebut berbeda - beda, host masih bisa berkomunikasi dengan host lain karena menggunakan standart komunikasi yang sama, yakni TCP/IP. Protokol internet pertama kali dirancang pada tahun 1980-an. Akan
+                                tetapi di tahun 1990-an dimana internet semakin populer dan host yang semakin banyak, mulai bemunculan protokol yang hanya bisa digunakan oleh kalangan tertentu, atau protokol yang dibuat oleh pabrik tertentu yang belum
+                                tentu kompatibel dengan protokol lain dari pabrik yang lain pula. Sehingga pada akhirnya badan International Standart Organization (ISO) membuat standarisasi protokol yang saat ini dikenal dengan protokol model Open System
+                                Interconnection atau disingkat OSI. Model OSI ini manjadi referensi dan konsep dasar teori tentang cara kerja sebuah protokol. Dalam perkembangannya TCP/IP digunakan sebagai standart de facto. Ketika ISO (International
+                                Standart Organization) membuat standarisasi protokol, maka terciptalah sebuah standar model referensi yang berisi cara kerja protokol. Model referensi yang kemudian disebut dengan Open System Interconnection (OSI). Berdasarkan
+                                dokumen rekomendasi X.200, standart OSI ini memiliki 7 layer. Tiap layer ini memiliki definisi fungsi yang berbeda.</p>
+
+
+
+                            <p><b>Mengapa Model Referensi dibuat Berlayer?</b></p>
+                            <p>Lapisan-Lapisan pada OSI Layer dibuat dengan tujuan agar setiap paket data dalam sebuah jaringan bisa melewati layer tersebut sebelum pada akhirnya bisa saling terkoneksi. Model OSI Layer ini beroperasi dengan satu prinsip
+                                dasar, yaitu setiap layer menangani pekerjaan spesifik, dan kemudian meneruskan data ke layer berikutnya sebelum akhirnya terkoneksi satu sama lain. Maka dari itu, setiap layer memiliki fungsi yang berbeda.
+                            </p>
+
+
+                            <p><b>Apa Fungsi Transport Layer?</b></p>
+                            <p>Sesuai dengan namanya, tansport layer merupakan lapisan OSI yang memilki tugas sebagai pengantar. Fungsi utama dari transport layer pada lapisan OSI ini adalah :</p>
+                            <p>1. Memecah data ke dalam paket–paket data.<br>2. Mentransmisikan data dari session layer menuju network layer, maupun sebaliknya. <br>3. Membuat penomoran pada paket – paket data, sehingga nantinya dapat disusun kembali dengan
+                                mudah.
+                                <br>4. Melakukan proses transmisi ulang pada paket data yang hilang.</p>
+                            <p>Berkat adanya transport layer ini, maka setiap data bisa saling berjalan dari server menuju clientnya dengan lancar tanpa adanya gangguan. </p>
+
+
+                            <h4>Transmission Control Protocol (TCP)</h4>
+                            <hr>
+                            <p>Transmission Control Protocol/Internet Protocol (TCP/IP) adalah protocol standar yang digunakan dalam proses tukar menukar data antar komputer (komunikasi) dalam jaringan internet. TCP/IP mengatur standar bagaimana data bisa
+                                dikirim dan diterima antar komputer dengan menggunakan jaringan yang ada saat ini yaitu jaringan internet. Dengan menggunakan protokol TCP, maka proses pengiriman akan terjamin. Hal ini disebabkan adanya bagian untuk sebuah
+                                metode yang disebut flow control.</p>
+
+                            <p><b>Karakteristik TCP</b></p>
+                            <ul>
+                                <li>Berorientasi sambungan (connection-oriented): Sebelum data dapat ditransmisikan antara dua host, dua proses yang berjalan pada lapisan aplikasi harus melakukan negosiasi untuk membuat sesi koneksi terlebih dahulu. Koneksi
+                                    TCP ditutup dengan menggunakan proses terminasi koneksi TCP (TCP connection termination).</li>
+                                <li>Full-duplex: Untuk setiap host TCP, koneksi yang terjadi antara dua host terdiri atas dua buah jalur, yakni jalur keluar dan jalur masuk. Dengan menggunakan teknologi lapisan yang lebih rendah yang mendukung full-duplex,
+                                    maka data pun dapat secara simultan diterima dan dikirim. Header TCP berisi nomor urut (TCP sequence number) dari data yang ditransmisikan dan sebuah acknowledgment dari data yang masuk.</li>
+                                <li>Dapat diandalkan (reliable): Data yang dikirimkan ke sebuah koneksi TCP akan diurutkan dengan sebuah nomor urut paket dan akan mengharapkan paket positive acknowledgment dari penerima. Jika tidak ada paket Acknowledgment
+                                    dari penerima, maka segmen TCP (protocol data unit dalam protokol TCP) akan ditransmisikan ulang. Pada pihak penerima, segmen-segmen duplikat akan diabaikan dan segmen-segmen yang datang tidak sesuai dengan urutannya
+                                    akan diletakkan di belakang untuk mengurutkan segmen-segmen TCP. Untuk menjamin integritas setiap segmen TCP, TCP mengimplementasikan penghitungan TCP Checksum.</li>
+                                <li>Byte stream: TCP melihat data yang dikirimkan dan diterima melalui dua jalur masuk dan jalur keluar TCP sebagai sebuah byte stream yang berdekatan (kontigu). Nomor urut TCP dan nomor acknowlegment dalam setiap header TCP
+                                    didefinisikan juga dalam bentuk byte. Meski demikian, TCP tidak mengetahui batasan pesan-pesan di dalam byte stream TCP tersebut. Untuk melakukannya, hal ini diserahkan kepada protokol lapisan aplikasi (dalam DARPA
+                                    Reference Model), yang harus menerjemahkan byte stream TCP ke dalam "bahasa" yang ia pahami.</li>
+                                <li>Memiliki layanan flow control: Untuk mencegah data terlalu banyak dikirimkan pada satu waktu, yang akhirnya membuat "macet" jaringan internetwork IP, TCP mengimplementasikan layanan flow control yang dimiliki oleh pihak
+                                    pengirim yang secara terus menerus memantau dan membatasi jumlah data yang dikirimkan pada satu waktu. Untuk mencegah pihak penerima untuk memperoleh data yang tidak dapat disangganya (buffer), TCP juga mengimplementasikan
+                                    flow control dalam pihak penerima, yang mengindikasikan jumlah buffer yang masih tersedia dalam pihak penerima.</li>
+                                <li>Melakukan segmentasi terhadap data yang datang dari lapisan aplikasi (dalam DARPA Reference Model)</li>
+                                <li>Mengirimkan paket secara "one-to-one": hal ini karena memang TCP harus membuat sebuah sirkuit logis antara dua buah protokol lapisan aplikasi agar saling dapat berkomunikasi. TCP tidak menyediakan layanan pengiriman data
+                                    secara one-to-many.</li>
+                            </ul>
+                            <p><b>Bagaimana Prinsip Kerja TCP?</b></p>
+                            <p>TCP mempunyai prinsip kerja seperti "virtual circuit" pada jaringan telepon. TCP lebih mementingkan tata-cara dan keandalan dalam pengiriman data antara dua komputer dalam jaringan. TCP tidak perduli dengan apa-apa yang dikerjakan
+                                oleh IP, yang penting adalah hubungan komunikasi antara dua komputer berjalan dengan baik. Dalam hal ini, TCP mengatur bagaimana cara membuka hubungan komunikasi, jenis aplikasi apa yang akan dilakukan dalam komunikasi
+                                tersebut (misalnya mengirim e-mail, transfer file dsb.) Di samping itu, juga mendeteksi dan mengoreksi jika ada kesalahan data. TCP mengatur seluruh proses koneksi antara satu komputer dengan komputer yang lain dalam sebuah
+                                jaringan komputer.
+                            </p>
+                            <p>TCP mengatur multiplexing dari data yang dikirim/diterima oleh sebuah komputer. Adanya identifikasi pada TCP header memungkinkan multiplexing dilakukan. Hal ini memungkinkan sebuah komputer melakukan beberapa hubungan TCP secara
+                                logik. Bentuk hubungan adalah full duplex, hal ini memungkinkan dua buah komputer saling berbicara dalam waktu bersamaan tanpa harus bergantian menggunakan kanal komunikasi. Untuk mengatasi saturasi (congestion) pada kanal
+                                komunikasi, pada header TCP dilengkapi informasi tentang flow control.</p>
+                            <p> Prinsip kerja dari TCP berdasarkan prinsip client-server. Server adalah program pada komputer yang secara pasif akan mendengarkan (listen) nomor port yang telah ditentukan pada TCP. Sedang client adalah program yang secara
+                                aktif akan membuka hubungan TCP ke komputer server untuk meminta servis yang dibutuhkan.</p>
+                            <p>Hal yang cukup penting untuk dipahami pada TCP adalah port number. Port number menentukan servis yang dilakukan oleh program aplikasi diatas TCP. Nomor-nomor ini telah ditentukan oleh Network Information Center dalam Request
+                                For Comment (RFC) 1010 [10]. Sebagai contoh untuk aplikasi File Transfer Protokol (FTP) diatas transport layer TCP digunakan port number 20 dan masih banyak lagi.Prinsip kerja dari TCP berdasarkan prinsip client-server.
+                                Server adalah program pada komputer yang secara pasif akan mendengarkan (listen) port number yang telah ditentukan pada TCP. Sedang client adalah program yang secara aktif akan membuka hubungan TCP ke komputer server untuk
+                                meminta servis yang dibutuhkan.State diagram kerja TCP diperlihatkan pada gambar 3. Pada state diagram gambar 3, client akan secara aktif membuka hubungan (active open) dengan mengirimkan sinyal SYN (state SYN SENT) ke
+                                komputer server tujuan. Jika server menerima sinyal SYN maka server yang saat itu berada pada state LISTEN akan mengirimkan sinyal SYN dan ke dua komputer (client & server) akan ke state ESTAB. Jika tidak ada tanggapan
+                                dari komputer yang dituju, maka program akan kembali pada state CLOSE. Setelah servis yang dilakukan telah selesai maka salah client akan mengirimkan sinyal FIN dan komputer client akan berada pada state FIN WAIT sampai
+                                sinyal FIN dari server diterima. Pada saat menerima sinyal FIN, server akan ke state CLOSE WAIT hingga hubungan diputus. Akhirnya kedua komputer akan kembali pada state CLOSE.</p><br>
+
+                            <p><b>Struktur Segmen TCP</b></p><br>
+                            <center><img src="icon/segmen.png" alt=""></center><br>
+                            <ol>
+                                <li>Source Port</li>
+                                <p>Source Port memiliki ukuran 2 byte dan mengindikasikan sumber protokol lapisan aplikasi yang mengirimkan segmen TCP yang bersangkutan. Gabungan antara field Source IP Address dalam header IPdan field Source Port dalam field
+                                    header TCP disebut juga sebagai socketsumber, yang berarti sebuah alamat global dari mana segmen dikirimkan. Lihat juga Port TCP.</p>
+                                <li>Destination Port</li>
+                                <p>Destination Port memiliki ukuran 2 byte (16 bit) dan mengindikasikan tujuan protokol lapisan aplikasi yang menerima segmen TCP yang bersangkutan. Gabungan antara field Destination IP Address dalam header IP dan field Destination
+                                    Port dalam field header TCP disebut juga sebagai sockettujuan, yang berarti sebuah alamat global ke mana segmen akan dikirimkan.</p>
+                                <li>Sequence Number</li>
+                                <p>Sequence Number memiliki ukuran 4 byte (32 bit) dan mengindikasikan nomor urut dari oktet pertama dari data di dalam sebuah segmen TCP yang hendak dikirimkan. Field ini harus selalu diset, meskipun tidak ada data (payload)
+                                    dalam segmen. Ketika memulai sebuah sesi koneksi TCP, segmen dengan flag SYN (Synchronization) diset ke nilai 1, field ini akan berisi nilai Initial Sequence Number (ISN). Hal ini berarti, oktet pertama dalam aliran
+                                    byte (byte stream) dalam koneksi adalah ISN+1.</p>
+                                <li>Acknowledgment Number</li>
+                                <p>Acknowledgment Number memiliki ukuran 4 byte (32 bit) dan mengindikasikan nomor urut dari oktet selanjutnya dalam aliran byte yang diharapkan oleh untuk diterima oleh pengirim dari si penerima pada pengiriman selanjutnya.
+                                    Acknowledgment number sangat dipentingkan bagi segmen-segmen TCP dengan flag ACK diset ke nilai 1.</p>
+                                <li>Data Offset</li>
+                                <p>Data Offset memiliki ukuran 4 bit dan mengindikasikan di mana data dalam segmen TCP dimulai. Field ini juga dapat berarti ukuran dari header TCP. Seperti halnya field Header Length dalam header IP, field ini merupakan angka
+                                    dari word 32-bit dalam header TCP. Untuk sebuah segmen TCP terkecil (di mana tidak ada opsi TCP tambahan), field ini diatur ke nilai 0×5, yang berarti data dalam segmen TCP dimulai dari oktet ke 20 dilihat dari permulaan
+                                    segmen TCP. Jika field Data Offset diset ke nilai maksimumnya (24=16) yakni 15, header TCP dengan ukuran terbesar dapat memiliki panjang hingga 60 byte.</p>
+                                <li>Reserved</li>
+                                <p>Reserved memiliki ukuran 6 bit dan direservasikan untuk digunakan pada masa depan. Pengirim segmen TCP akan mengeset bit-bit ini ke dalam nilai 0.</p>
+                                <li>Flags</li>
+                                <p>Flags memiliki ukuran 6 bit dan mengindikasikan flag-flag TCP yang memang ada enam jumlahnya, yang terdiri atas: URG (Urgent), ACK (Acknowledgment), PSH (Push), RST (Reset), SYN (Synchronize), dan FIN (Finish).</p>
+                                <li>Window</li>
+                                <p>Window memiliki ukuran 2 byte (16 bit) dan mengindikasikan jumlah byte yang tersedia yang dimiliki oleh buffer host penerima segmen yang bersangkutan. Buffer ini disebut sebagai Receive Buffer, digunakan untuk menyimpan
+                                    byte stream yang datang. Dengan mengimbuhkan ukuran window ke setiap segmen, penerima segmen TCP memberitahukan kepada pengirim segmen berapa banyak data yang dapat dikirimkan dan disangga dengan sukses. Hal ini dilakukan
+                                    agar si pengirim segmen tidak mengirimkan data lebih banyak dibandingkan ukuran Receive Buffer. Jika tidak ada tempat lagi di dalam Receive buffer, nilai dari field ini adalah 0. Dengan nilai 0, maka si pengirim tidak
+                                    akan dapat mengirimkan segmen lagi ke penerima hingga nilai field ini berubah (bukan 0). Tujuan hal ini adalah untuk mengatur lalu lintas data atau flow control.</p>
+                                <li>Checksum</li>
+                                <p>Checksum memiliki ukuran 2 byte (16 bit) dan mampu melakukan pengecekan integritas segmen TCP (header-nya dan payload-nya). Nilai field Checksum akan diatur ke nilai 0 selama proses kalkulasi checksum.</p>
+                                <li>Urgent Pointer</li>
+                                <p>Urgent Pointer memiliki ukuran 2 byte (16 bit) dan menandakan lokasi data yang dianggap “urgent” dalam segmen.</p>
+                                <li>Options</li>
+                                <p>Options memiliki ukuran 4 byte (32 bit) dan berfungsi sebagai penampung beberapa opsi tambahan TCP. Setiap opsi TCP akan memakan ruangan 32 bit, sehingga ukuran header TCP dapat diindikasikan dengan menggunakan field Data
+                                    offset.
+                                </p>
+                            </ol>
+                            <p><b>Proses FLow Control</b></p>
+                            <p>TCP juga menyediakan mekanisme untuk <b>flow control</b>. Flow control membantu menjaga kehandalan transmisi TCP dengan menyesuaikan laju aliran data antara sumber dan tujuan untuk sesi tertentu. Flow control dilakukan dengan
+                                membatasi jumlah segmen data yang diteruskan pada satu waktu dan dengan meminta acknowledgements penerimaan sebelum mengirim lebih. Untuk menjalankan flow control, hal pertama yang menentukan TCP adalah jumlah segmen data
+                                yang dapat diterima perangkat tujuan. TCP Header memuat sebuah field 16-bit yang disebut <b>window size</b>. Ini adalah jumlah byte perangkat tujuan dari sesi TCP yang mampu menerima dan memproses sekaligus. inisaial window
+                                size disetujui selama sesi startup melalui three-way handshake antara sumber dan tujuan. Setelah disetujui, perangkat sumber harus membatasi jumlah segmen data yang dikirim ke perangkat tujuan berdasarkan ukuran jendela
+                                (window size). Hanya setelah perangkat sumber menerima acknowledgements bahwa segmen data yang telah diterima, hal tersebut bisa terus mengirim lebih banyak data untuk sesi itu. Selama penundaan dalam menerima acknowledgements,
+                                pengirim tidak mengirimkan segmen tambahan. Dalam periode ketika jaringan mengalami hambatan atau sumber daya host penerima yang tegang, penundaan dapat meningkat. Penundaan ini akan bertambah lagi, tingkat transmisi efektif
+                                data untuk sesi ini menurun. Perlambatan dalam transmisi data dari setiap sesi membantu mengurangi konflik sumber daya pada jaringan dan perangkat tujuan ketika beberapa sesi berjalan.</p>
+                            <br>
+                            <center><img src="icon/fc.jpg" alt=""></center>
+                            <p>Perhatikan angka untuk representasi yang disederhanakan dari window size dan acknowledgements. Dalam contoh ini, window size awal untuk sesi TCP direpresentasikan ke 3000 bytes. Ketika pengirim telah mentransmisikan 3000 bytes,
+                                menunggu acknowledgements dari byte ini sebelum mengirimkan segmen lainnya dalam sesi ini. Setelah pengirim telah menerima acknowledgements dari penerima, pengirim dapat mengirimkan tambahan 3000 bytes. TCP menggunakan
+                                window size untuk mencoba mengelola tingkat transmisi terhadap aliran maksimum jaringan dan perangkat tujuan dapat mendukung, dan meminimalkan kerugian dengan transmisi ulang.</p>
+                            <p>Metode lain dari flow control adalah dengan menggunakan dynamic window size. Caranya adalah dengan mengubah-ubah nilai window size pada header TCP. Host penerima mengirim nilai window size yang bisa ditampung dalam satu session
+                                kepada pengirim. Ketika penerima ingin menurunkan kecepatan komunikasi karena terbatasnya buffer memori atau hal lain, maka dia akan mengirim nilai window size yang lebih kecil. Setelah beberapa kali transmisi tanpa ada
+                                data yang hilang atau buffer memori berlebih, penerima perlahan menaikkan nilai window size sehingga mengurangi jumlah acknowledgement yang harus dikirimkan. Nilai window size akan terus naik sampai ada data yang hilang
+                                atau alasan lain.
+                            </p>
+                            <br>
+                            <center><img src="icon/fc1.jpg" alt=""></center>
+                            <p>Seperti terlihat pada gambar, jika host penerima memiliki kemacetan, mungkin merespon ke host pengirim dengan segmen yang menentukan penurunan window size. Dalam gambar ini, ada salah satu segmen yang hilang. Penerima mengubah
+                                window field pada TCP header dari segmen kembali dalam kasus ini dari 3.000 ke 1.500, yang menyebabkan pengirim untuk mengurangi window size sampai 1.500. Setelah periode transmisi dengan tidak ada data yang hilang atau
+                                sumber daya terbatas, penerima mulai meningkatkan window field, yang mengurangi overhead pada jaringan, karena acknowledgements (pengakuan) sedikit harus dikirim. Ukuran jendela terus meningkat sampai ada data yang hilang,
+                                yang menyebabkan window size berkurang. Peningkatan dan penurunan yang dinamis pada window size merupakan proses yang berkesinambungan di TCP. Dalam jaringan yang sangat efisien, window size dapat menjadi sangat besar karena
+                                data tidak hilang. Dalam jaringan di mana infrastruktur yang mendasari berada di bawah tekanan, window size mungkin tetap kecil.</p>
+                            <br>
+                            <p><b></b></p>
+                            <p><b>Bagaimana TCP mengatasi Kongesti (kemacetan dalam jaringan)</b></p>
+                            <p>Paket mungkin hilang selama transportasi karena kongesti jaringan dan kesalahan. Dengan menggunakan kode deteksi kesalahan, seperti checksum, maka protokol transport dapat memeriksa bahwa data tidak rusak, dan memverifikasi
+                                penerimaan yang benar dengan mengirim ACK atau pesan NACK ke pengirim. Skema mengulangi permintaan otomatis dapat digunakan untuk mengirim ulang data yang hilang atau rusak. Si penerima akan mengirim kembali kode ACK /
+                                balasan dari paket yang terakhir sampai di penerima. Apabila paketnya tidak sampai ke penerima, maka pengirim akan segera mengetahui karena pengirim memiliki limit waktu untuk menunggu balasan dari penerima. Jika penerima
+                                tidak memberikan balasan bahwa paket telah diterima atau ACK, maka pengirim akan mengirim ulang paket tersebut</p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+</body>
+
+</html>
