@@ -170,9 +170,9 @@
                                 yang menyebabkan window size berkurang. Peningkatan dan penurunan yang dinamis pada window size merupakan proses yang berkesinambungan di TCP. Dalam jaringan yang sangat efisien, window size dapat menjadi sangat besar karena
                                 data tidak hilang. Dalam jaringan di mana infrastruktur yang mendasari berada di bawah tekanan, window size mungkin tetap kecil.</p>
                             <br>
-                            <p><b>TCP Three Way Handshake</b></p>
-                            <p>Connection establish antara host pengirim dan host tujuan dilakukan dengan menjalankan Three Way Handshake. Three-way Handshake adalah proses pembuatan koneksi TCP yang bertujuan melakukan sinkronisasi terhadap nomor urut dan
-                                nomor acknowledgement yang dikirimkan oleh kedua host dan saling bertukar ukuran TCP Window.Three-way Handshake ini merupakan suatu metode yang digunakan untuk membangun TCP koneksi atau mengakhiri TCP koneksi. 3-way handshake
+                            <p><b>Mekanisme Komunikasi TCP</b></p>
+                            <p>Connection establish antara host pengirim dan host tujuan dilakukan dengan menjalankan <b> Three Way Handshake</b>. Three-way Handshake adalah proses pembuatan koneksi TCP yang bertujuan melakukan sinkronisasi terhadap nomor urut dan
+                                nomor acknowledgement yang dikirimkan oleh kedua host dan saling bertukar ukuran TCP Window. Three-way Handshake ini merupakan suatu metode yang digunakan untuk membangun TCP koneksi atau mengakhiri TCP koneksi. Three-way Handshake
                                 diantaranya adalah <b>"SYN-ACK SYN-ACK"</b>. </p>
 
                             <br>
@@ -183,7 +183,7 @@
                                 <ol>
                                     <li>Host pertama (yang ingin membuat koneksi) akan mengirimkan sebuah segmen TCP dengan flag SYN dan diaktifkan kepada host kedua (yang akan diajak komunikasi).</li>
                                     <li>Host kedua akan meresponnya dengan mengirimkan segmen dengan acknowledgement dan juga SYN kepada host pertama.</li>
-                                    <li> Host pertama selanjutnya akan mulai saling bertukar data dengan host kedua.</li>
+                                    <li>Host pertama selanjutnya akan mulai saling bertukar data dengan host kedua.</li>
                                 </ol>
                             </p>
 
