@@ -170,12 +170,28 @@
                                 yang menyebabkan window size berkurang. Peningkatan dan penurunan yang dinamis pada window size merupakan proses yang berkesinambungan di TCP. Dalam jaringan yang sangat efisien, window size dapat menjadi sangat besar karena
                                 data tidak hilang. Dalam jaringan di mana infrastruktur yang mendasari berada di bawah tekanan, window size mungkin tetap kecil.</p>
                             <br>
-                            <p><b></b></p>
+                            <p><b>TCP Three Way Handshake</b></p>
+                            <p>Connection establish antara host pengirim dan host tujuan dilakukan dengan menjalankan Three Way Handshake. Three-way Handshake adalah proses pembuatan koneksi TCP yang bertujuan melakukan sinkronisasi terhadap nomor urut dan
+                                nomor acknowledgement yang dikirimkan oleh kedua host dan saling bertukar ukuran TCP Window.Three-way Handshake ini merupakan suatu metode yang digunakan untuk membangun TCP koneksi atau mengakhiri TCP koneksi. 3-way handshake
+                                diantaranya adalah <b>"SYN-ACK SYN-ACK"</b>. </p>
+
+                            <br>
+                            <center><img src="icon/twh2.png"></center>
+                            <p>Metode ini dirancang sehingga ketika dua komputer mencoba memulai komunikasi akan dilakukan negosiasi parameter jaringan TCP terlebih dahulu. Metode ini juga dirancang sehingga kedua komputer dapat memulai dan bernegosiasi
+                                terpisah TCP koneksi socket pada waktu yang sama.</p>
+                            <p>Prosesnya dapat dijelaskan sebagai berikut:
+                                <ol>
+                                    <li>Host pertama (yang ingin membuat koneksi) akan mengirimkan sebuah segmen TCP dengan flag SYN dan diaktifkan kepada host kedua (yang akan diajak komunikasi).</li>
+                                    <li>Host kedua akan meresponnya dengan mengirimkan segmen dengan acknowledgement dan juga SYN kepada host pertama.</li>
+                                    <li> Host pertama selanjutnya akan mulai saling bertukar data dengan host kedua.</li>
+                                </ol>
+                            </p>
+
                             <p><b>Bagaimana TCP mengatasi Kongesti (kemacetan dalam jaringan)</b></p>
-                            <p>Paket mungkin hilang selama transportasi karena kongesti jaringan dan kesalahan. Dengan menggunakan kode deteksi kesalahan, seperti checksum, maka protokol transport dapat memeriksa bahwa data tidak rusak, dan memverifikasi
-                                penerimaan yang benar dengan mengirim ACK atau pesan NACK ke pengirim. Skema mengulangi permintaan otomatis dapat digunakan untuk mengirim ulang data yang hilang atau rusak. Si penerima akan mengirim kembali kode ACK /
-                                balasan dari paket yang terakhir sampai di penerima. Apabila paketnya tidak sampai ke penerima, maka pengirim akan segera mengetahui karena pengirim memiliki limit waktu untuk menunggu balasan dari penerima. Jika penerima
-                                tidak memberikan balasan bahwa paket telah diterima atau ACK, maka pengirim akan mengirim ulang paket tersebut</p>
+                            <p>Paket mungkin hilang selama transportasi karena kongesti jaringan dan kesalahan. Dengan menggunakan kode deteksi kesalahan seperti checksum, maka protokol transport dapat memeriksa bahwa data tidak rusak dan memverifikasi penerimaan
+                                yang benar dengan mengirim ACK atau pesan NACK ke pengirim. Skema mengulangi permintaan otomatis dapat digunakan untuk mengirim ulang data yang hilang atau rusak. Si penerima akan mengirim kembali kode ACK / balasan dari
+                                paket yang terakhir sampai di penerima. Apabila paketnya tidak sampai ke penerima, maka pengirim akan segera mengetahui karena pengirim memiliki limit waktu untuk menunggu balasan dari penerima. Jika penerima tidak memberikan
+                                balasan bahwa paket telah diterima atau ACK, maka pengirim akan mengirim ulang paket tersebut</p>
                         </div>
                     </div>
                 </div>
