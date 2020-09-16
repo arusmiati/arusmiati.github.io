@@ -494,6 +494,7 @@ nav {
     }
     .section {
         margin-left: 80px;
+        min-height: 100vh;
     }
     .about .about-content .profil .info-item p span {
         display: block;
