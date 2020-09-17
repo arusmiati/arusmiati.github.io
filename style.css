@@ -645,4 +645,8 @@ nav {
     .network-item {
         margin-bottom: 20px;
     }
+    
+    .cn h2{
+        font-size: 30px;
+    }
 }
