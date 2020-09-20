@@ -21,7 +21,9 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
 }
-
+.flag {
+    margin-left: 33px;
+}
 .cn ol li {
     margin-top: 10px;
     margin-left: 35px;
