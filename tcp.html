@@ -245,7 +245,7 @@
                                         terjadi, cwnd diset ke satu MSS. Saat cwnd > ssthresh, fase slow start selesai dan congestion avoidance mengambil alih. Congestion window menaikkan cwnd dengan: Saat fase congestion avoidance, cwnd tidak akan pernah
                                         dipecah lebih dari satu segmen per RTT, jika semua segmen dalam window telah di-ACK. Ini merupakan laju pertumbuhan linear bila dibandingkan dengan laju pertumbuhan eksponensial slow start.</p>
                                     <li>Congestion Detection</li>
-                                    <p>Pengurangan multiplikatif – Jika kemacetan terjadi, ukuran jendela kemacetan dikurangi. Satu-satunya cara pengirim dapat menebak bahwa kemacetan telah terjadi adalah kebutuhan untuk mengirimkan ulang segmen. Transmisi
+                                    <p>Jika kemacetan terjadi, ukuran jendela kemacetan dikurangi. Satu-satunya cara pengirim dapat menebak bahwa kemacetan telah terjadi adalah kebutuhan untuk mengirimkan ulang segmen. Transmisi
                                         ulang diperlukan untuk memulihkan paket yang hilang yang diasumsikan telah dijatuhkan oleh router karena kemacetan. Transmisi ulang dapat terjadi dalam salah satu dari dua kasus: saat timer RTO habis atau saat tiga
                                         ACK duplikat diterima.</p>
                                 </ol>
