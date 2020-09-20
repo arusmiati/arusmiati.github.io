@@ -129,7 +129,41 @@
                                 <li>Reserved</li>
                                 <p>Reserved memiliki ukuran 6 bit dan direservasikan untuk digunakan pada masa depan. Pengirim segmen TCP akan mengeset bit-bit ini ke dalam nilai 0.</p>
                                 <li>Flags</li>
-                                <p>Flags memiliki ukuran 6 bit dan mengindikasikan flag-flag TCP yang memang ada enam jumlahnya, yang terdiri atas: URG (Urgent), ACK (Acknowledgment), PSH (Push), RST (Reset), SYN (Synchronize), dan FIN (Finish).</p>
+                                <p>Flags memiliki ukuran 6 bit dan mengindikasikan flag-flag TCP yang memang ada enam jumlahnya, yang terdiri atas:
+                                    <ul class="flag">
+                                        <li>URG (Urgent)</li>
+                                        <p>Mengindikasikan bahwa beberapa bagian dari segmen TCP mengandung data yang sangat penting, dan field Urgent Pointer dalam header TCP harus digunakan untuk menentukan lokasi di mana data penting tersebut berada dalam
+                                            segmen.
+                                        </p>
+                                        <li>ACK (Acknowledgment)</li>
+                                        <p>Mengindikasikan field Acknowledgment mengandung oktet selanjutnya yang diharapkan dalam koneksi. Flag ini selalu diset, kecuali pada segmen pertama pada pembuatan sesi koneksi TCP.</p>
+                                        <li>PSH (Push)</li>
+                                        <p>Mengindikasikan bahwa isi dari TCP Receive buffer harus diserahkan kepada protokol lapisan aplikasi. Data dalam receive buffer harus berisi sebuah blok data yang berurutan (kontigu), dilihat dari ujung paling kiri
+                                            dari buffer. Dengan kata lain, sebuah segmen yang memiliki flag PSH diset ke nilai 1, tidak bolah ada satu byte pun data yang hilang dari aliran byte segmen tersebut.</p>
+                                        <p>Data tidak dapat diberikan kepada protokol lapisan aplikasi hingga segmen yang hilang tersebut datang. Normalnya, TCP Receive buffer akan dikosongkan (dengan kata lain, isi dari buffer akan diteruskan kepada protokol
+                                            lapisan aplikasi) ketika buffer tersebut berisi data yang kontigu atau ketika dalam "proses perawatan". Flag PSH ini dapat mengubah hal seperti itu, dan membuat akan TCP segera mengosongkan TCP Receive buffer.</p>
+                                        <p>Flag PSH umumnya digunakan dalam protokol lapisan aplikasi yang bersifat interaktif, seperti halnya Telnet, karena setiap penekanan tombol dalam sesi terminal virtual akan dikirimkan dengan sebuah flag PSH diset
+                                            ke nilai 1. Contoh dari penggunaan lainnya dari flag ini adalah pada segmen terakhir dari berkas yang ditransfer dengan menggunakan protokol FTP. Segmen yang dikirimkan dengan flag PSH aktif tidak harus segera
+                                            di-acknowledge oleh penerima.</p>
+                                        <li>RST (Reset)</li>
+                                        <p>Mengindikasikan bahwa koneksi yang dibuat akan digagalkan. Untuk sebuah koneksi TCP yang sedang berjalan (aktif), sebuah segmen dengan flag RST diset ke nilai 1 akan dikirimkan sebagai respons terhadap sebuah segmen
+                                            TCP yang diterima yang ternyata segmen tersebut bukan yang diminta, sehingga koneksi pun menjadi gagal. Pengiriman segmen dengan flag RST diset ke nilai 1 untuk sebuah koneksi aktif akan menutup koneksi secara
+                                            paksa, sehingga data yang disimpan dalam buffer akan dibuang (dihilangkan). Untuk sebuah koneksi TCP yang sedang dibuat, segmen dengan flag RST aktif akan dikirimkan sebagai respons terhadap request pembuatan
+                                            koneksi untuk mencegah percobaan pembuatan koneksi.</p>
+                                        <li>SYN (Synchronize)</li>
+                                        <p>Mengindikasikan bahwa segmen TCP yang bersangkutan mengandung Initial Sequence Number (ISN). Selama proses pembuatan sesi koneksi TCP, TCP akan mengirimkan sebuah segmen dengan flag SYN diset ke nilai 1. Setiap
+                                            host TCP lainnya akan memberikan jawaban (acknowledgment) dari segmen dengan flag SYN tersebut dengan menganggap bahwa segmen tersebut merupakan sekumpulan byte dari data. Field Acknowledgment Number dari sebuah
+                                            segmen SYN diatur ke nilai ISN + 1.</p>
+                                        <li>FIN (Finish)
+                                        </li>
+                                        <p>Menandakan bahwa pengirim segmen TCP telah selesai dalam mengirimkan data dalam sebuah koneksi TCP. Ketika sebuah koneksi TCP akhirnya dihentikan (akibat sudah tidak ada data yang dikirimkan lagi), setiap host TCP
+                                            akan mengirimkan sebuah segmen TCP dengan flag FIN diset ke nilai 1. Sebuah host TCP tidak akan mengirimkan segmen dengan flag FIN hingga semua data yang dikirimkannya telah diterima dengan baik (menerima paket
+                                            acknowledgment) oleh penerima. Setiap host akan menganggap sebuah segmen TCP dengan flag FIN sebagai sekumpulan byte dari data. Ketika dua host TCP telah mengirimkan segmen TCP dengan flag FIN dan menerima acknowledgment
+                                            dari segmen tersebut, maka koneksi TCP pun akan dihentikan.
+
+                                        </p>
+                                    </ul>
+                                </p>
                                 <li>Window</li>
                                 <p>Window memiliki ukuran 2 byte (16 bit) dan mengindikasikan jumlah byte yang tersedia yang dimiliki oleh buffer host penerima segmen yang bersangkutan. Buffer ini disebut sebagai Receive Buffer, digunakan untuk menyimpan
                                     byte stream yang datang. Dengan mengimbuhkan ukuran window ke setiap segmen, penerima segmen TCP memberitahukan kepada pengirim segmen berapa banyak data yang dapat dikirimkan dan disangga dengan sukses. Hal ini dilakukan
@@ -170,9 +204,9 @@
                                 yang menyebabkan window size berkurang. Peningkatan dan penurunan yang dinamis pada window size merupakan proses yang berkesinambungan di TCP. Dalam jaringan yang sangat efisien, window size dapat menjadi sangat besar karena
                                 data tidak hilang. Dalam jaringan di mana infrastruktur yang mendasari berada di bawah tekanan, window size mungkin tetap kecil.</p>
                             <br>
-                            <p><b>Mekanisme Komunikasi TCP</b></p>
-                            <p>Connection establish antara host pengirim dan host tujuan dilakukan dengan menjalankan <b> Three Way Handshake</b>. Three-way Handshake adalah proses pembuatan koneksi TCP yang bertujuan melakukan sinkronisasi terhadap nomor urut dan
-                                nomor acknowledgement yang dikirimkan oleh kedua host dan saling bertukar ukuran TCP Window. Three-way Handshake ini merupakan suatu metode yang digunakan untuk membangun TCP koneksi atau mengakhiri TCP koneksi. Three-way Handshake
+                            <p><b>TCP Three Way Handshake</b></p>
+                            <p>Connection establish antara host pengirim dan host tujuan dilakukan dengan menjalankan Three Way Handshake. Three-way Handshake adalah proses pembuatan koneksi TCP yang bertujuan melakukan sinkronisasi terhadap nomor urut dan
+                                nomor acknowledgement yang dikirimkan oleh kedua host dan saling bertukar ukuran TCP Window.Three-way Handshake ini merupakan suatu metode yang digunakan untuk membangun TCP koneksi atau mengakhiri TCP koneksi. 3-way handshake
                                 diantaranya adalah <b>"SYN-ACK SYN-ACK"</b>. </p>
 
                             <br>
@@ -183,17 +217,39 @@
                                 <ol>
                                     <li>Host pertama (yang ingin membuat koneksi) akan mengirimkan sebuah segmen TCP dengan flag SYN dan diaktifkan kepada host kedua (yang akan diajak komunikasi).</li>
                                     <li>Host kedua akan meresponnya dengan mengirimkan segmen dengan acknowledgement dan juga SYN kepada host pertama.</li>
-                                    <li>Host pertama selanjutnya akan mulai saling bertukar data dengan host kedua.</li>
+                                    <li> Host pertama selanjutnya akan mulai saling bertukar data dengan host kedua.</li>
                                 </ol>
                             </p>
                             <p>TCP menggunakan proses jabat tangan yang sama untuk mengakhiri koneksi yang dibuat. Hal ini menjamin dua host yang sedang terkoneksi tersebut telah menyelesaikan proses transmisi data dan semua data yang ditransmisikan telah
                                 diterima dengan baik. Itulah sebabnya, mengapa TCP disebut dengan koneksi yang reliable</p>
-
                             <p><b>Bagaimana TCP mengatasi Kongesti (kemacetan dalam jaringan)</b></p>
                             <p>Paket mungkin hilang selama transportasi karena kongesti jaringan dan kesalahan. Dengan menggunakan kode deteksi kesalahan seperti checksum, maka protokol transport dapat memeriksa bahwa data tidak rusak dan memverifikasi penerimaan
                                 yang benar dengan mengirim ACK atau pesan NACK ke pengirim. Skema mengulangi permintaan otomatis dapat digunakan untuk mengirim ulang data yang hilang atau rusak. Si penerima akan mengirim kembali kode ACK / balasan dari
                                 paket yang terakhir sampai di penerima. Apabila paketnya tidak sampai ke penerima, maka pengirim akan segera mengetahui karena pengirim memiliki limit waktu untuk menunggu balasan dari penerima. Jika penerima tidak memberikan
                                 balasan bahwa paket telah diterima atau ACK, maka pengirim akan mengirim ulang paket tersebut</p>
+                            <p>ACK untuk data yang dikirim digunakan oleh pengirim untuk menyimpulkan kondisi jaringan antara pengirim TCP dan penerima. Ditambah dengan timer, TCP pengirim dan penerima dapat mengubah arus aliran data. Implementasi modern
+                                TCP berisi empat algoritma yang sangat terkait: Slow Start, congestion avoidance, fast retransmit, dan fast recovery. selain itu, pengirim menggunakan retransmission timeout (RTO) yang didasarkan pada perkiraan waktu pulang-pergi
+                                (RTT) antara pengirim dan penerima, serta varian dalam pulang pergi ini. Meningkatkan TCP untuk dapat diandalkan menangani kerugian, meminimalkan kesalahan, mengelola kemacetan dan pergi cepat di lingkungan yang sangat
+                                berkecepatan tinggi adalah bidang penelitian dan pengembangan standar yang sedang berlangsung. Akibatnya, ada sejumlah variasi algoritma penghindaran kemacetan TCP.
+
+                                <ol class="ack">
+                                    <li>Slow Start </li>
+                                    <p>Start mengizinkan TCP memeriksa kondisi jaringan dengan menaikkan secara perlahan data yang diinjeksikan ke dalam network. Algoritma slow start menggunakan congestion window untuk mengontrol flow data. Congestion window
+                                        diinisialisasi ke satu segmen, biasanya 512 bytes. Prinsip slow start sederhana, bahwa untuk setiap ACK yang diterima menambahkan satu segmen ke congestion window. Pengirim dapat mengirim congestion windows minimum,
+                                        atau ssthresh. Ssthresh diinisialisasi ke window yag diperlihatkan penerima. Saat cwnd lebih besar atau sama dengan nilai ssthresh, koneksi memasuki fase congestion avoidance. Jika kapasitas jaringan dapat dipenuhi
+                                        sebelum cwnd lebih besar dari ssthresh, maka gateway akan memberi sinyal kongesti dengan membuang segmen dan TCP akan memasuki fase retransmit setelah tiga ACK duplikat.</p>
+
+                                    <li>Congestion Avoidance</li>
+                                    <p>Jalur bottleneck dapat terjadi saat saluran besar terhubung ke saluran kecil. Kongesti terjadi saat volume segmen dapat melampaui buffer space gateway. Gateway akan terus membuang segmen sampai buffer space tersedia.
+                                        Proses ini memberi sinyal kongesti pada koneksi TCP melalui ACK duplikat atau retransmission timeout. Saat kongesti terjadi, koneksi melakukan recovery lalu memasuki congestion avoidance. Jika retransmission timeout
+                                        terjadi, cwnd diset ke satu MSS. Saat cwnd > ssthresh, fase slow start selesai dan congestion avoidance mengambil alih. Congestion window menaikkan cwnd dengan: Saat fase congestion avoidance, cwnd tidak akan pernah
+                                        dipecah lebih dari satu segmen per RTT, jika semua segmen dalam window telah di-ACK. Ini merupakan laju pertumbuhan linear bila dibandingkan dengan laju pertumbuhan eksponensial slow start.</p>
+                                    <li>Congestion Detection</li>
+                                    <p>Pengurangan multiplikatif – Jika kemacetan terjadi, ukuran jendela kemacetan dikurangi. Satu-satunya cara pengirim dapat menebak bahwa kemacetan telah terjadi adalah kebutuhan untuk mengirimkan ulang segmen. Transmisi
+                                        ulang diperlukan untuk memulihkan paket yang hilang yang diasumsikan telah dijatuhkan oleh router karena kemacetan. Transmisi ulang dapat terjadi dalam salah satu dari dua kasus: saat timer RTO habis atau saat tiga
+                                        ACK duplikat diterima.</p>
+                                </ol>
+                            </p>
                         </div>
                     </div>
                 </div>
