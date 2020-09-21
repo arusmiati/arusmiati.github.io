@@ -204,10 +204,13 @@
                                 yang menyebabkan window size berkurang. Peningkatan dan penurunan yang dinamis pada window size merupakan proses yang berkesinambungan di TCP. Dalam jaringan yang sangat efisien, window size dapat menjadi sangat besar karena
                                 data tidak hilang. Dalam jaringan di mana infrastruktur yang mendasari berada di bawah tekanan, window size mungkin tetap kecil.</p>
                             <br>
-                            <p><b>TCP Three Way Handshake</b></p>
-                            <p>Connection establish antara host pengirim dan host tujuan dilakukan dengan menjalankan Three Way Handshake. Three-way Handshake adalah proses pembuatan koneksi TCP yang bertujuan melakukan sinkronisasi terhadap nomor urut dan
-                                nomor acknowledgement yang dikirimkan oleh kedua host dan saling bertukar ukuran TCP Window.Three-way Handshake ini merupakan suatu metode yang digunakan untuk membangun TCP koneksi atau mengakhiri TCP koneksi. 3-way handshake
-                                diantaranya adalah <b>"SYN-ACK SYN-ACK"</b>. </p>
+                            <p><b>Mekanisme Komunikasi TCP</b></p>
+                            <p>Pada komunikasi TCP, setiap servis akan di assign (default/manual) dengan sebuah port number. Dua atau lebih aplikasi servis tidak boleh menggunakan port yang sama. Ketika sebuah port telah di assign ke sebuah aplikasi server,
+                                maka port itu disebut open pada sisi server. Salah satu metode untuk meningkatkan security adalah dengan membatasi akses hanya pada port yang digunakan oleh servis saja.</p><br>
+                            <center><img src="https://akhmadkun.files.wordpress.com/2012/10/5-klien-server.jpg" alt=""></center>
+                            <p>Connection establish antara host pengirim dan host tujuan dilakukan dengan menjalankan <b>Three Way Handshake</b>. Three-way Handshake adalah proses pembuatan koneksi TCP yang bertujuan melakukan sinkronisasi terhadap nomor
+                                urut dan nomor acknowledgement yang dikirimkan oleh kedua host dan saling bertukar ukuran TCP Window.Three-way Handshake ini merupakan suatu metode yang digunakan untuk membangun TCP koneksi atau mengakhiri TCP koneksi.
+                                3-way handshake diantaranya adalah <b>"SYN-ACK SYN-ACK"</b>. </p>
 
                             <br>
                             <center><img src="icon/twh2.png"></center>
@@ -233,19 +236,19 @@
                                 berkecepatan tinggi adalah bidang penelitian dan pengembangan standar yang sedang berlangsung. Akibatnya, ada sejumlah variasi algoritma penghindaran kemacetan TCP.
 
                                 <ol class="ack">
-                                    <li>Slow Start </li>
+                                    <li><b>Slow Start</b> </li>
                                     <p>Start mengizinkan TCP memeriksa kondisi jaringan dengan menaikkan secara perlahan data yang diinjeksikan ke dalam network. Algoritma slow start menggunakan congestion window untuk mengontrol flow data. Congestion window
                                         diinisialisasi ke satu segmen, biasanya 512 bytes. Prinsip slow start sederhana, bahwa untuk setiap ACK yang diterima menambahkan satu segmen ke congestion window. Pengirim dapat mengirim congestion windows minimum,
                                         atau ssthresh. Ssthresh diinisialisasi ke window yag diperlihatkan penerima. Saat cwnd lebih besar atau sama dengan nilai ssthresh, koneksi memasuki fase congestion avoidance. Jika kapasitas jaringan dapat dipenuhi
                                         sebelum cwnd lebih besar dari ssthresh, maka gateway akan memberi sinyal kongesti dengan membuang segmen dan TCP akan memasuki fase retransmit setelah tiga ACK duplikat.</p>
 
-                                    <li>Congestion Avoidance</li>
+                                    <li><b>Congestion Avoidance</b></li>
                                     <p>Jalur bottleneck dapat terjadi saat saluran besar terhubung ke saluran kecil. Kongesti terjadi saat volume segmen dapat melampaui buffer space gateway. Gateway akan terus membuang segmen sampai buffer space tersedia.
                                         Proses ini memberi sinyal kongesti pada koneksi TCP melalui ACK duplikat atau retransmission timeout. Saat kongesti terjadi, koneksi melakukan recovery lalu memasuki congestion avoidance. Jika retransmission timeout
                                         terjadi, cwnd diset ke satu MSS. Saat cwnd > ssthresh, fase slow start selesai dan congestion avoidance mengambil alih. Congestion window menaikkan cwnd dengan: Saat fase congestion avoidance, cwnd tidak akan pernah
                                         dipecah lebih dari satu segmen per RTT, jika semua segmen dalam window telah di-ACK. Ini merupakan laju pertumbuhan linear bila dibandingkan dengan laju pertumbuhan eksponensial slow start.</p>
-                                    <li>Congestion Detection</li>
-                                    <p>Jika kemacetan terjadi, ukuran jendela kemacetan dikurangi. Satu-satunya cara pengirim dapat menebak bahwa kemacetan telah terjadi adalah kebutuhan untuk mengirimkan ulang segmen. Transmisi
+                                    <li><b>Congestion Detection</b></li>
+                                    <p>Pengurangan multiplikatif – Jika kemacetan terjadi, ukuran jendela kemacetan dikurangi. Satu-satunya cara pengirim dapat menebak bahwa kemacetan telah terjadi adalah kebutuhan untuk mengirimkan ulang segmen. Transmisi
                                         ulang diperlukan untuk memulihkan paket yang hilang yang diasumsikan telah dijatuhkan oleh router karena kemacetan. Transmisi ulang dapat terjadi dalam salah satu dari dua kasus: saat timer RTO habis atau saat tiga
                                         ACK duplikat diterima.</p>
                                 </ol>
