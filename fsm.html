@@ -163,7 +163,7 @@
                                 penambahan timeout. Sedangkan sisi penerimanya tetap sama. Namun, adanya penambahan timeout pada sender side mengakibatkan adanya kemungkinan duplikat paket yang diterima receiver. Terdapat dua buah state pada FSM protokol
                                 komunikasi diatas yaitu tate <b>Wait for 0 from below </b> dan <b>state Wait for 1 from below</b> serta terdapat dua event pada masing-masing state.</p>
 
-                            <p><b>Prinsip Kerja rdt 3.0 dari sisi Sender</b></p>
+                            <p><b>Prinsip Kerja rdt 3.0 dari sisi Receiver</b></p>
                             <p>Proses pertama dimulai dari state <b>wait for 0 from below</b> yang ditunjukkan oleh tanda panah putus-putus.</p>
                             <center><img src="icon/rdtr1.png" alt=""></center>
                             <p>Pada state ini terdapat event <b>rdt_rcv(rcvpkt && notcorrupt(rcvpkt) && has_seq0(rcvpkt) </b> yang artinya sebuah paket telah diterima dari layer bawah (network layer) dan paket itu tidak korup serta paket itu memiliki sequence
