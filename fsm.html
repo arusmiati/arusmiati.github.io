@@ -10,13 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:500,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        .ul {
-            margin-left: 30px;
+        ul {
+            margin-left: 20px;
         }
         
-        @media (max-width: 767px) {
-            .ul {
-                margin-left: 10px;
+        @media (max-width: 1199px) {
+            ul {
+                margin-left: 0px;
             }
         }
     </style>
@@ -59,12 +59,6 @@
                             <center><img src="icon/diagram.png" alt=""></center>
                             <p>Diagram tersebut memperlihatkan FSM dengan dua buah state dan dua buah input serta empat buah aksi output yang berbeda. Seperti terlihat pada gambar, ketika sistem mulai dihidupkan, sistem akan bertransisi menuju state0, pada
                                 keadaan ini sistem akan menghasilkan Action1 jika terjadi masukan Event0, sedangkan jika terjadi Event1 maka Action2 akan dieksekusi kemudian sistem selanjutnya bertransisi ke keadaan State1 dan seterusnya</p>
-                            <p>Secara formal FSM dinyatakan oleh 5 tupel atau M=(Q, ∑, δ, S, F) (Utdirartama, 2001) dimana:</p>
-                            <p class="r">Q = himpunan state / kedudukan</p>
-                            <p class="r">∑ = himpunan symbol input / masukan / abjad</p>
-                            <p class="r">δ = fungsi transisi</p>
-                            <p class="r">S = state awal / kedudukan awal (initial state)</p>
-                            <p class="r">F = himpunan state akhir</p>
 
                             <br>
 
@@ -78,233 +72,131 @@
                                     adalah program compiler, yaitu program untuk memeriksa apakah perintah yang digunakan pengguna benar atau salah.</p>
                             </ol>
 
-                            <p>Ada dua metode utama untuk memperlakukan FSM untuk menghasilkan output yaitu Moore Machine dan Mealy Machine.</p>
-                            <center><img src="icon/machine.png"></center>
 
-                            <p>Gambar diatas memperlihatkan 2 jenis FSM, yaitu Moore FSM dan Mealy FSM. Perbedaan utama antara dua jenis ini adalah bit input yang langsung diumpan sekaligus ke dua logic circuit. </p>
-
-                            <ol>
-                                <li>Moore Machine</li>
-                                <p>Moore Machine adalah finite state machine yang nilai outputnya ditentukan berdasarkan statenya sehingga jumlah state sama dengan jumlah Output .Diagram Mesin Moore atau Diagram Moore adalah diagram yang menghubungkan nilai
-                                    output dengan masing-masing state. Salah satu contoh penerapan mesin Moore adalah mesin untuk memperoleh sisa pembagian.
-                                </p>
-
-                                <li>Mealy Machine</li>
-                                <p>Mealy Machine adalah finite state machine yang nilai outputnya ditentukan oleh state dan inputnya. Diagram mesin mealy menghubungkan nilai output dengan masing-masing transisi.</p>
-                            </ol>
-
-                            <h4>Reliable Data Transfer (rdt)</h4>
+                            <h4>Reliable Data Transfer (rdt) 3.0</h4>
                             <p>Reliable Data Transfer (rdt) adalah suatu mekanisme TCP yang menyediakan komunikasi logis antara proses aplikasi yang berjalan pada host yang berbeda. dinamakan <b>reliabel</b> karena TCP menjamin bahwa data tersebut pasti
                                 diterima sesuai dengan yang dikirimkan. Terdapat beberapa tipe rdt yaitu <b>rdt 1.0, rdt 2.1, rdt 2.2, rdt 3.0, dll</b>. Secara dasar, rdt menggunakan protokol stop-and-wait. Mekanismenya adalah setiap mengirim paket, sender
                                 akan berhenti mengirim dan menunggu feedback dari penerima yang menandakan bahwa paket telah sampai tujuan. Namun, karena alasan jarak yang jauh, muncul berbagai versi update yang ada di rdt. </p>
 
-                            <ol>
-                                <b><li>rdt 1.0</li></b>
-                                <p>rdt 1.0 = RDT over Perfectly Reliable Channel</p>
-                                <p>Versi ini merupakan versi dasar dari rdt, dimana ketika sender mengirim sebuah paket data, maka paket data selanjutnya akan dikirim jika receiver telah mengirim ACK bahwa paket data yang telah dikirim sudah diterima.</p>
+                            <b><p>rdt3.0 = RDT over a Lossy Channel with Bit Errors</p></b>
+                            <p>Pada proses rdt 3.0 pengiriman data dan ACK dilakukan secara berurutan tetapi tidak terdapat duplikasi data atau ACK seperti pada RDT 2.2. Pada versi ini, Sender dilengkapi dengan timer untuk ACK. Cara kerjanya adalah jika
+                                ACK tidak tiba, maka paket tersebut akan dikirim ulang. Jika seandainya ACK tidak hilang, namun hanya terkena delay, maka hal ini akan menyebabkan paket terduplikasi. Namun, karena adanya field untuk sequence number , maka
+                                paket tidak perlu diteruskan ke lapisan aplikasi.</p>
 
-                                <br>
-                                <p><b>Dari sisi Sender:</b></p>
-                                <center><img src="icon/rdt10sender.png" alt=""></center>
-                                <ul class="ul">
-                                    <li> Menunggu panggilan dari atas (layer aplikasi)</li>
-                                    <li> Ketika ada perintah maka jalankan fungsi packet = make_pkt</li>
-                                    <li> Paket yang akan dikirimkan lewat udt_send.</li>
-                                </ul>
-                                <br>
-                                <p><b>Dari sisi Receiver:</b></p>
-                                <center><img src="icon/rdt10receiver.png" alt=""></center>
-                                <ul class="ul">
-                                    <li> dt_rcv menunggu panggilan dari bawah(layer data link)</li>
-                                    <li> Ketika ada sinyal maka dt_rcv menerima paket</li>
-                                    <li> Paket yang selanjutnya akan dijalankan fungsi extract yaitu mengekstrak paket data</li>
-                                    <li> Selanjutnya paket data dikirim ke layer aplikasi(di sisi penerima).</li><br>
-                                    <p>Kelemahan rdt 1.0 yaitu tidak ada pengecekan bit eror pada setiap paket.</p>
-                                </ul>
-                                <br>
-
-                                <b><li>rdt 2.0</li></b>
-                                <p>rdt2.0 = RDT over a Channel with Bit Errors</p>
-                                <p>Versi rdt ini memperbaiki kelemahan dari rdt 1.0 yaitu dengan adanya checksum untuk mendeteksi bitnya eror atau tidak. rdt 2.0 mencoba meniru bagaimana cara manusia berdialog, yaitu ketika 2 orang sedang berbicara jika
-                                    yang satunya kurang mengerti akan bertanya ‘maaf kamu tadi bilang apa? ‘ yang menandakan bahwa dia tidak menangkap pembicaraan.</p>
-                                <br>
-                                <p>Cara agar bisa recover data yang hilang yaitu dengan ada 2 pemberitahuan sebagai berikut :</p>
-                                <ul class="ul">
-                                    <li><b>Acknowledgment</b> : Penerima secara eksplisit memberitahu pengirim bahwa data diterima dengan baik.</li>
-                                    <li><b>Negativ acknowledgement</b> : Penerima secara eksplisit memberiitahu pengirim kalau paketnya terdapat bit-bit yang eror atau hilang.</li>
-                                </ul>
-                                <br>
-                                <p>Pada rdt 2.0, disisi Sender ada 2 macam state. Pertama adalah state yang menunggu data untuk dikirimkan. Kedua adalah state yang menunggu adanya ACK atau NAK yang dikirim dari Receiver. Disisi Reciever, masih menggunakan
-                                    1 state saja yaitu hanya mengirimkan ACK atau NAK tergantung pada paket yang diterima, apakah corrupt atau tidak. </p>
-                                <br>
-                                <p><b>Dari sisi Sender: </b></p>
-                                <center><img src="icon/rdt20sender.png" alt=""></center>
-                                <ul class="ul">
-                                    <li>Menunggu panggilan dari atas (layer aplikasi)</li>
-                                    <li>Ketika ada perintah maka jalankan fungsi packet = make_pkt (data,checksum) yaitu membuat paket dan menyertakan checksum. </li>
-                                    <li>Packet data dikirimkan lewat udt_send</li>
-                                    <li>Jika mendapat ACK, berarti packet telah sampai dan tidak corrupt.</li>
-                                    <li>Jika mendapat NAK maka udt_send mentransmisikan ulang yaitu pada fungsi rdt_rcv(rcvpkt)&&is NAK(rcv_pkt) dan udt_send yang mengirimkan file itu lagi</li>
-                                    <li>Jika mendapat ACK, berarti packet telah sampai dan tidak corrupt</li>
-                                </ul>
-                                <br>
-                                <p><b>Dari sisi Receiver: </b></p>
-                                <center><img src="icon/rdt20receiver.png" alt=""></center>
-                                <ul class="ul">
-                                    <li>Fungsi rdt_rcv menunggu panggilan dari bawah(layer data link)</li>
-                                    <li>Ketika ada sinyal maka dia menerima paket dan mengecek apakah paket tersebut rusak atau tidak </li>
-                                    <li>Jika tidak rusak, maka selanjutnya akan dijalankan fungsi extract yaitu mengekstrak paket data untuk selanjutnya dikirim ke layer aplikasi(di sisi penerima) dan ia juga mengirim ACK melalui udt_send</li>
-                                    <li>Jika rusak, maka selanjutnya akan dijalankan fungsi rdt_rcv(rcv_pkt)&& corrupt(rcvpkt) maka udt_send mengirim NAK</li>
-                                    <li>rdt_rcv menunggu panggilan dari bawah(layer data link), ketika ada sinyal maka dia menerima paket dan mengeceknya rusak atau tidak, jika tidak maka selanjutnya akan dijalankan fungsi extract yaitu mengekstrak paket
-                                        data untuk selanjutnya dikirim ke layer aplikasi(di sisi penerima) dan ia juga mengirim ACK melalui udt_send. </li>
-                                </ul>
-                                <br>
-                                <p>Kelemahan rdt 2.0 yaitu jika ACK/NAK rusak maka sender tidak tau apa yang terjadi disisi receiver. Solusinya adalah diberi waktu (misalnya jika setelah 3 sekon tidak menerima file ACK/NAK) maka file akan ditransmisikan
-                                    ulang. Namun hal ini menyebabkan duplikasi data.</p>
-
-                                <b><li>rdt 2.1</li></b>
-                                <p>Versi rdt ini memperbaiki kelemahan rdt 2.0 yaitu dengan menambahkan sequence number pada setiap paket. Cara kerja rdt 2.1 sama dengan 2.0, hanya saja ada 2 paket dan diberikan sequence number yaitu <b>0</b> dan <b>1</b>.
-                                    Pada rdt 2.1, paket data ditambahkan field yang berisi Sequence Number. Dengan demikian, Reciever hanya perlu memeriksa isi field tersebut untuk mendefinisikan apakah paket perlu di kirim ulang atau tidak.</p>
-                                <br>
-                                <p><b>Dari sisi Sender: </b></p>
-                                <center><img src="icon/rdt21sender.png" alt=""></center>
-                                <ul class="ul">
-                                    <li>Pada state 1, disisi sender menunggu panggilan dari atas (layer aplikasi), ketika ada perintah maka jalankan fungsi packet = make_pkt (0,data,checksum) yaitu membuat paket dan memberi sequence number 0 dan menyertakan
-                                        checksum yang akan dikirimkan lewat udt_send. </li>
-                                    <li>Pada state ke 2, menunggu untuk ACK atau NAK dimana ada 2 kemungkinan yaitu jika NAK maka data rusak dan segera kembali mentransmisikan paket 0 melalui udt_send lagi. </li>
-                                    <li>Jika ACK maka paket 0 telah selesai. </li>
-                                    <li>Pada state ke 3,menunggu panggilan dari atas (layer aplikasi) lagi, ketika ada perintah maka jalankan fungsi packet = make_pkt (1,data,checksum) yaitu membuat paket dan memberi sequence number 1 dan menyertakan checksum
-                                        yang akan dikirimkan lewat udt_send. </li>
-                                    <li>Pada state ke 4,menunggu untuk ACK atau NAK dimana ada 2 kemungkinan yaitu jika NAK maka data rusak dan segera kembali mentransmisikan paket 1 melalui udt_send lagi. </li>
-                                    <li>Jika ACK maka paket 1 telah selesai. </li>
-                                </ul>
-                                <br>
-                                <p><b>Dari sisi Receiver: </b></p>
-                                <center><img src="icon/rdt21receiver.png" alt=""></center>
-                                <ul class="ul">
-                                    <li>Pada state 1 disisi reveiver rdt_rcv menunggu panggilan 0 dari bawah(layer data link) </li>
-                                    <li>Ketika ada sinyal maka dia menerima paket dan mengeceknya rusak atau tidak, ada 3 kemungkinan yaitu
-                                        <ol class="li">
-                                            <li>Jika data rusak maka receiver menjalankan fungsi rdt_rcv(rcvpkt)&&(corrupt(rcvpkt)) dan mengirimkan paket NAK dengan checksum melalui udt_send agar disisi sender menerima pemberitahuan paket rusak. kemudian
-                                                menunggu packet data dengan sequence number 0 untuk dikirim. </li>
-                                            <li>Jika packet data utuh dan packet data diterima dengan sequence no.1, maka receiver mengirimkan packet ACK dan checksum melalui udt_send. dan kemudian menunggu packet data 0 untuk dikirim. </li>
-                                            <li>Jika packet data utuh dan packet data yang dikirim adalah packet data 0 maka menjalankan fungsi rdt_rcv(rcvpkt)&&(not corrupt(rcvpkt)) || has_seq0 dan mengirimkan paket ACK dengan checksum melalui udt_send agar
-                                                disisi sender menerima pemberitahuan paket sampai dan tidak rusak. </li>
-                                        </ol>
-                                    </li>
-
-                                    <li>Jika paket utuh dan tidak eror maka selanjutnya akan dijalankan fungsi extract yaitu mengekstrak paket data dengan seq 0 untuk selanjutnya dikirim ke layer aplikasi(di sisi penerima). </li>
-                                    <li>Pada state ke 2, menunggu panggilan 1 dari bawah(layer data link) </li>
-                                    <li>Ketika ada sinyal maka dia menerima paket dan mengeceknya rusak atau tidak, ada 3 kemungkinan yaitu:
-                                        <ol class="li">
-                                            <li>Jika data rusak maka menjalankan fungsi rdt_rcv(rcvpkt)&&(corrupt(rcvpkt)) dan mengirimkan paket NAK dengan checksum melalui udt_send agar disisi sender menerima pemberitahuan paket rusak. </li>
-                                            <li>Jika packet data utuh dan packet data diterima dengan sequence no.0, maka receiver memberikan ACK. kemudian receiver mengirimkan packet ACK dan checksum melalui udt_send. dan kemudian menunggu packet data 1
-                                                untuk dikirim. </li>
-                                            <li>Packet data utuh dan packet data yang dikirim adalah packet data 1 maka menjalankan fungsi rdt_rcv(rcvpkt)&&(not corrupt(rcvpkt)) || has_seq1 dan mengirimkan paket ACK dengan checksum melalui udt_send agar disisi
-                                                sender menerima pemberitahuan paket sampai dan tidak rusak.</li>
-                                        </ol>
-                                    </li>
-                                </ul>
-
-                                <br>
-                                <b><li>rdt 2.2</li></b>
-
-                                <p>Versi rdt ini memperbaiki kelemahan rdt 2.0 yaitu dengan meningkatkan sequence number. Pada proses rdt 2.2 ini menyerupai dengan rdt 2.1 tetapi pada proses rdt 2.2 ini hanya digunakan ACK karena NAK bersifat free protocol.
-                                    Jika disisi sender menerima ACK yang duplikat/ganda maka fungsi yang dijalankan sama seperti NAK yaitu sender mengirimkan paket itu lagi.</p>
-
-                                <br>
-                                <p><b>Dari sisi Sender</b></p>
-                                <center><img src="icon/rdt22sender.png" alt=""></center>
-                                <ul class="ul">
-                                    <li>Pada state 1 pengirim melakukan pengiriman data dengan menunggu panggilan dari atas (layer aplikasi). Ketika ada perintah maka jalankan fungsi packet = make_pkt (0,data,checksum) yaitu membuat paket dan memberi sequence
-                                        number 0 dan menyertakan checksum yang akan dikirimkan lewat udt_send. </li>
-                                    <li>Pada state ke 2, menunggu untuk ACK 0 dimana ada 2 kemungkinan yaitu :
-                                        <ol>
-                                            <li>Jika menerima packet data rusak atau ACK 1 maka packet data kembali mentransmisikan paket 0 melalui udt_send lagi. </li>
-                                            <li>Jika packet data tidak rusak dan menerima ACK 0 maka sudah benar dan telah selesai. </li>
-                                        </ol>
-                                    </li>
-
-                                    <li>Pada state 3, menunggu panggilan dari atas (layer aplikasi) ketika ada perintah maka jalankan fungsi packet = make_pkt (1,data,checksum) yaitu membuat paket dan memberi sequence number 1 dan menyertakan checksum yang
-                                        akan dikirimkan lewat udt_send. </li>
-                                    <li>Jika packet data tidak rusak dan menerima ACK 1 maka sudah benar dan telah selesai. </li>
-                                </ul>
-                                <br>
-                                <p><b>Dari sisi Receiver</b></p>
-                                <center><img src="icon/rdt22receiver.png" alt=""></center>
-                                <ul class="ul">
-                                    <li>Pada state 1 disisi reveiver rdt_rcv menunggu panggilan packet data 0 dari bawah(layer data link), ketika ada sinyal maka dia menerima paket dan mengeceknya rusak atau tidak, ada 2 kemungkinan yaitu jika data corrupt
-                                        atau packet data yang diterima adalah packet data sequence no.1,maka receiver akan mengirimkan ACK 1 dengan menjalankan fungsi udt_send(snd_pkt) kemudian menunggu kembali untuk packet data 0 untuk dikirim. </li>
-                                    <li>Jika data utuh dan memiliki sequence no.0 maka menjalankan fungsi rdt_rcv(rcvpkt)&&(not corrupt(rcvpkt)) || has_seq0(rcvpkt) lalu menjalankan fungsi extract yaitu mengekstrak paket data untuk selanjutnya dikirim ke
-                                        layer aplikasi(di sisi penerima). Receiver juga mengirimkan paket ACK 0 dengan checksum melalui udt_send agar disisi sender menerima pemberitahuan paket sampai dan tidak rusak. </li>
-                                    <li>Pada state 2 disisi reveiver rdt_rcv menunggu panggilan packet data 1 dari bawah(layer data link), ketika ada sinyal maka dia menerima paket dan mengeceknya rusak atau tidak, ada 2 kemungkinan yaitu jika data corrupt
-                                        atau packet data yang diterima adalah packet data sequence no.0,maka receiver akan mengirimkan ACK 0 dengan menjalankan fungsi udt_send(snd_pkt) kemudian menunggu kembali untuk packet data 1 untuk dikirim. </li>
-                                    <li>Jika data utuh dan memiliki sequence no.0, maka menjalankan fungsi rdt_rcv(rcvpkt)&&(not corrupt(rcvpkt)) || has_seq1(rcvpkt) lalu menjalankan fungsi extract yaitu mengekstrak paket data untuk selanjutnya dikirim ke
-                                        layer aplikasi(di sisi penerima). Receiver juga mengirimkan paket ACK 1 dengan checksum melalui udt_send agar disisi sender menerima pemberitahuan paket sampai dan tidak rusak. </li>
-
-                                </ul>
-
-                                <b><li>rdt 3.0</li></b>
-                                <p>rdt3.0 = RDT over a Lossy Channel with Bit Errors</p>
-                                <p>Pada proses rdt 3.0 pengiriman data dan ACK dilakukan secara berurutan tetapi tidak terdapat duplikasi data atau ACK seperti pada RDT 2.2. Pada versi ini, Sender dilengkapi dengan timer untuk ACK. Cara kerjanya adalah jika
-                                    ACK tidak tiba, maka paket tersebut akan dikirim ulang. Jika seandainya ACK tidak hilang, namun hanya terkena delay, maka hal ini akan menyebabkan paket terduplikasi. Namun, karena adanya field untuk sequence number
-                                    , maka paket tidak perlu diteruskan ke lapisan aplikasi.</p>
-                                <br>
-                                <p><b>Dari sisi Sender</b></p>
-                                <center><img src="icon/rdt30sender.png" alt=""></center>
-                                <ul class="ul">
-                                    <li>Pada state 1 menunggu panggilan dari atas (layer aplikasi) ketika ada perintah maka akan terjadi 2 kemungkinan yaitu:
-                                        <ol class="li">
-                                            <li>Jalankan fungsi packet = make_pkt (0,data,checksum) yaitu membuat paket dan memberi sequence number 0 dan menyertakan checksum yang akan dikirimkan lewat udt_send dan diberikan timer. </li>
-                                            <li>Kedua, dari sisi sender akan menerima packet melalui fungsi rdt_rcv(rcvpkt). </li>
-                                        </ol>
-                                    </li>
-                                    <li>Pada state ke 2 yaitu menunggu untuk ACK 0 dimana ada 3 kemungkinan yaitu:
-                                        <ol class="li">
-                                            <li>Jika packet data yang diterima rusak atau medapatkan ACK 1, maka langsung menunggu Kembali ACK 0 dari sisi penerima. </li>
-                                            <li>Jika kehabisan waktu(timeout), maka packet data 0 akan dikirim ulang dan memulai ulang waktu Kembali. </li>
-                                            <li>Jika packet data yang diterima tidak rusak dan mendapatkan ACK 0, maka hentikan waktunya. artinya packet data 0 sudah sampai di penerima. </li>
-                                        </ol>
-                                    </li>
-                                    <li>Pada state 3, menunggu panggilan dari atas (layer aplikasi) ketika ada perintah maka akan terjadi 2 kemungkinan. perama, jalankan fungsi packet = make_pkt (1,data,checksum) yaitu membuat paket dan memberi sequence number
-                                        1 dan menyertakan checksum yang akan dikirimkan lewat udt_send dan diberikan timer. </li>
-                                    <li>Pada state ke 4 yaitu menunggu untuk ACK 1 dimana ada 3 kemungkinan yaitu:
-                                        <ol class="li">
-                                            <li>Jika packet data yang diterima rusak atau medapatkan ACK 0, maka langsung menunggu Kembali ACK 1 dari sisi penerima. </li>
-                                            <li>Jika kehabisan waktu(timeout), maka packet data 1 akan dikirim ulang dan memulai ulang waktu Kembali. </li>
-                                            <li>Jika packet data yang diterima tidak rusak dan mendapatkan ACK 1, maka hentikan waktunya. artinya packet data 1 sudah sampai di penerima.</li>
-                                        </ol>
-                                    </li>
-                                </ul>
-
-                                <br>
-                                <p><b>Dari sisi Receiver</b></p>
-                                <center><img src="icon/rdt30receiver.png" alt=""></center>
-                                <ul class="ul">
-                                    <li>Pada state 1 disisi reveiver rdt_rcv menunggu panggilan packet data 0 dari bawah(layer data link), ketika ada sinyal maka dia menerima paket dan mengeceknya rusak atau tidak, ada 2 kemungkinan yaitu jika data corrupt
-                                        atau packet data yang diterima adalah packet data sequence no.1, maka receiver akan mengirimkan ACK 1 dengan menjalankan fungsi udt_send(snd_pkt) kemudian menunggu kembali untuk packet data 0 untuk dikirim. </li>
-                                    <li>Jika data utuh dan memiliki sequence no.0, maka menjalankan fungsi rdt_rcv(rcvpkt)&&(not corrupt(rcvpkt)) || has_seq0(rcvpkt) lalu menjalankan fungsi extract yaitu mengekstrak paket data untuk selanjutnya dikirim ke
-                                        layer aplikasi(di sisi penerima). Receiver juga mengirimkan paket ACK 0 dengan checksum melalui udt_send agar disisi sender menerima pemberitahuan paket sampai dan tidak rusak. </li>
-                                    <li>Pada state 2 disisi reveiver rdt_rcv menunggu panggilan packet data 1 dari bawah(layer data link), ketika ada sinyal maka dia menerima paket dan mengeceknya rusak atau tidak, ada 2 kemungkinan yaitu jika data corrupt
-                                        atau packet data yang diterima adalah packet data sequence no.0,maka receiver akan mengirimkan ACK 0 dengan menjalankan fungsi udt_send(snd_pkt) kemudian menunggu kembali untuk packet data 1 untuk dikirim. </li>
-                                    <li>Jika data utuh dan memiliki sequence no.0, maka menjalankan fungsi rdt_rcv(rcvpkt)&&(not corrupt(rcvpkt)) || has_seq1(rcvpkt) lalu menjalankan fungsi extract yaitu mengekstrak paket data untuk selanjutnya dikirim ke
-                                        layer aplikasi(di sisi penerima). Receiver juga mengirimkan paket ACK 1 dengan checksum melalui udt_send agar disisi sender menerima pemberitahuan paket sampai dan tidak rusak.</li>
-
-                                </ul>
-
-                            </ol>
-
-                            <h4>PIPELINING</h4>
-                            <p>Pipelining merupakan sebuah protokol dimana client dapat mengerjakan beberapa bagian dari sebuah instruksi secara pararel sehingga dapat dilakukan dengan bersamaan tetapi pada tahap yang berbeda.</p>
-                            <p>Karena performansi rdt 3.0 sangat buruk, yaitu membuang banyak Gigalink dan hanya mendapatkan beberapa kB maka diperbaiki dengan adanya pipelining, yaitu : dalam 1 penerbangan langsung mengirim banyak paket, agar mengurangi
-                                waktu yang dibutuhkan untuk mengirimkan data. Namun seq no harus ditingkatkan agar tetap urut per size window.</p>
-                            <p>Misalnya : dalam 1 penerbangan terdapat 3 size window maka Usender=[(3L/R)/(RTT+(L/R))]
+                            <h4>RDT 3.0 Dari sisi SENDER (PENGIRIM)</h4>
+                            <center><img src="icon/rdt30sender.png" alt=""></center>
+                            <p>Gambar diatas menunjukkan FSM untuk rdt 3.0 pada sisi pengirim (sender). Pada gambar tersebut, jelas bahwa terdapat 4 state yaitu state <b>wait for call 0 from above</b>, state <b>wait for ACK 0</b>, state <b>wait for call 1 from above</b>,
+                                dan <b>state wait for ACK 0.</b></p>
+                            <p>Adapun makna beberapa simbol diatas ialah:</p>
+                            <ul>
+                                <li>Tanda panah putus-putus : state awal dari FSM.</li>
+                                <li>Tanda panah biru : transisi protokol dari 1 state ke state lain atau dari 1 state kembali ke state itu sendiri</li>
+                                <li>Event: menyebabkan terjadinya transisi pada state, terletak di atas garis horizontal. Adapun contoh event pada gambar diatas yakni : <b>rdt_send(data), timeout, rdt_rcv(rcvpkt),dst.</b></li>
+                                <li>Action : aksi/tindakan yang dilakukan jika terjadi event yg terdapat di bawah garis horizontal</li>
+                                <li> ACK : Acknowledgment (tanda terima dari receiver).</li>
+                                <li> ^ : tidak ada action yang dilakukan atau tidak ada event yang terjadi</li>
+                            </ul>
+                            <p><b>Prinsip Kerja rdt 3.0 dari sisi Sender</b></p>
+                            <p>Proses pertama dimulai dari state <b>wait for call 0 from above</b> yang ditunjukkan oleh tanda panah putus-putus.</p>
+                            <center><img src="icon/rdt.png" alt=""></center>
+                            <p> Pada state ini, terdapat event <b>rdt_send(data)</b> yang artinya data dari application layer di oper turun ke transport layer. Hal ini menandakan bahwa data telah berada di transport layer. Event <b>rdt_send(data)</b> kemudian
+                                diikuti oleh 3 tindakan yang dilaksanakan secara berurutan yaitu:
+                                <ol>
+                                    <li> <b>sndpkt=make_pkt(0,data,checksum)</b> yang berarti masukkan data ke dalam bentuk paket. Setelah data berada di transport layer maka data akan dimuat ke dalam bentuk paket dan diberi informasi-informasi tambahan. Sebuah
+                                        paket berisi data itu sendiri, checksum, dan sequence number (pada status “wait for call 0 from above” sequence number = 0).</li>
+                                    <li> <b>udt_send(sndpkt)</b> yang berarti paket ditransfer ke layer yang berada dibawah (network layer) untuk dikirimkan ke sisi penerima.</li>
+                                    <li> <b>start_timer</b> yang berarti countdown time telah dimulai.</li>
+                                </ol>
                             </p>
-                            <p>Ada 2 algoritma yaitu :</p>
-                            <ol>
-                                <li>Go Back N : Penerima hanya mengirim paket kumulatif.</li>
-                                <li>Selective : Penerima mengirim paket individual yang udah benar (bit-bitnya) tapi diberi seq number meskipun 1 window size (Jadi tempatnya tetap teratur/urut di tujuan)</li>
-                            </ol>
+                            <p> Setelah start_timer dilaksanakan maka status akan segera berubah menjadi <b>wait for ACK 0</b>.</p>
+
+                            <p>Selanjutnya proses kedua yaitu pada state <b>wait for ACK 0</b>.</p>
+                            <center><img src="icon/rdt1.png" alt=""></center>
+                            <p>Pada state ini terdapat 3 event, yaitu:
+                                <ol>
+                                    <li><b>rdt_rcv(rcvpkt) && (corrupt(rcvpkt)) || isACK(rcvpkt,1))</b>akan terjadi jika sisi sender menerima ack 1, padahal status saat ini ialah wait for ack 0 (menunggu ack 0). Itu berarti ack yang diterima oleh sender tidak
+                                        sesuai harapan sehingga sender menganggap bahwa paket yang diterima oleh receiver corrupt ataupun ack yang diterima oleh sender corrupt. Pada event ini tidak dilakukan tindakan apapun (∧). State akan kembali menjadi
+                                        <b>wait for ACK 0</b>. Lalu, menunggu sampai terjadi <b>timeout</b>.</li>
+                                    <li><b>timeout</b>. Event ini menandakan bahwa waktu hitung mundur yang dimulai pada saat data dikirim telah habis sementara ACK 0 belum diterima oleh sender. Tindakan yang dilakukan pada event ini ialah :
+                                        <ul>
+                                            <li><b>udt_send(sndpkt)</b> yang berarti aksi protokol untuk melakukan pengiriman ulang paket.</li>
+                                            <li><b>start_timer</b> merupakan tindakan untuk memulai kembali countdown time terhadap paket yang baru saja dikirim. Lalu protokol akan kembali pada status wait for ACK 0.</li>
+                                        </ul>
+
+                                    </li>
+                                    <li><b>rdt_rcv(rcvpkt) && notcorrupt(rcvpkt) && isACK(rcvpkt,0)</b> merupakan event yang berarti bahwa paket ack telah diterima dan data tidak korup atau rusak serta ack bernilai 0 (sesuai harapan). Tindakan dari event
+                                        ini ialah
+                                        <b>stop_timer</b>, merupakan tindakan yang menghentikan countdown timer.
+
+                                    </li>
+                                </ol>
+                            </p>
+                            <p>Setelah stop_timer dilaksanakan maka status akan berubah menjadi <b>wait for call 1 from above.</b></p>
+
+                            <p>Selanjutnya proses ketiga yaitu pada state <b>wait for call 1 from above</b>.</p>
+                            <center><img src="icon/rdt2.png" alt=""></center>
+                            <p>Pada state ini terdapat dua buah event, yaitu:
+                                <ol>
+                                    <li><b>rdt_send(data)</b>. Event pertama mirip dengan event pada state wait for call 0 from above dan telah dijelaskan sebelumnya. Perbedaanya hanya terletak pada sequence number. State <b>wait for call 1 from above</b>                                        akan mengirimkan paket dengan sequence number 1. Sehingga paket berisi data itu sendiri, checksum, dan sequence number bernilai 1. Lalu paket ini kemudian dikirimkan dengan action udt_send(sndpkt). Setelah itu start_timer
+                                        akan dijalankan kemudian status akan berubah menjadi <b>wait for ACK 1.</b>
+                                    </li>
+                                    <li><b>rdt_rcv(rcvpkt) </b> merupakan event yang tidak diikuti oleh tindakan apapun (do nothing “∧”). Event ini akan terjadi pada kasus premature timeout seperti pada gambar dibawah ini.
+                                        <center><img src="icon/timeout.PNG" alt=""></center>
+                                        Pada gambar diatas terdapat pengiriman ack yang delay atau sampai saat countdown time telah expired sehingga sender mengirim 2 paket yang sama dan menerima 2 ACK untuk paket yang sama. Saat ACK pertama telah diterima maka status akan langsung berubah.
+                                        Sehingga ACK kedua akan diterima pada status <b>wait for call 1 from above</b> danACK kedua ini akan diabaikan (do nothing)</li>
+                                </ol>
+
+                            </p>
+
+                            <p>Next state yaitu <b> wait for ACK 1.</b></p>
+                            <center><img src="icon/rdt3.png" alt=""></center>
+                            <p>ini mirip dengan state <b>wait for ACK 0.</b> Perbedaannya hanya terletak pada nilai sequence number yang ditunggu. Pada state ini protokol menunggu ACK dengan nilai 1. Jika ACK yang diterima ACK 0 maka status tidak akan berubah
+                                dan akan menunggu hingga timeout, jika sudah timeout maka paket akan dikirim ulang. Jika ACK yang diterima ACK 1 maka timer akan dihentikan lalu status akan berubah menjadi
+                                <b> wait for call 0 from above.</b>
+                            </p>
+                            <p>Siklus ini akan terus berulang dengan cara yang sama sampai pengirimian data selesai.</p>
+
+
+                            <h4> RDT 3.0 Dari sisi RECEIVER (PENERIMA)</h4>
+                            <center><img src="icon/rdtr.png" alt=""></center>
+                            <p>Pada dasarnya FSM protokol komunikasi dari sisi penerima pada rdt 3.0 sama dengan FSM protokol komunikasi dari sisi penerima pada rdt 2.2. perbedaan dari rdt 3.0 dan rdt 2.2 hanya terletak pada sisi pengirim saja, yaitu adanya
+                                penambahan timeout. Sedangkan sisi penerimanya tetap sama. Namun, adanya penambahan timeout pada sender side mengakibatkan adanya kemungkinan duplikat paket yang diterima receiver. Terdapat dua buah status pada FSM protokol
+                                komunikasi diatas. State <b>Wait for 0 from below </b> dan <b>state Wait for 1 from below</b> serta terdapat dua event pada masing-masing status.</p>
+
+                            <p><b>Prinsip Kerja rdt 3.0 dari sisi Sender</b></p>
+                            <p>Proses pertama dimulai dari state <b>wait for 0 from below</b> yang ditunjukkan oleh tanda panah putus-putus.</p>
+                            <center><img src="icon/rdtr1.png" alt=""></center>
+                            <p>Pada state ini terdapat event <b>rdt_rcv(rcvpkt && notcorrupt(rcvpkt) && has_seq0(rcvpkt) </b> yang artinya sebuah paket telah diterima dari layer bawah (network layer) dan paket itu tidak korup serta paket itu memiliki sequence
+                                number 0 (sesuai dengan harapan), maka akan diambil 4 tindakan, yaitu :
+                                <ol>
+                                    <li>Mengekstrak paket sehingga menjadi data dengan tindakan <b>extract(rcvpkt,data).</b> </li>
+                                    <li> Setelah itu data akan dioper ke layer atas (application layer) dengan tindakan <b>Deliver_data(data).</b> </li>
+                                    <li> Kemudian, FSM protokol penerima akan membuat paket yang berisi ACK beserta sequence number 0 dan checksum dengan menggunakan tindakan <b>sndpkt=make_pkt(ACK,0,checksum).</b></li>
+                                    <li>Terakhir, paket ACK ini akan di transfer ke layer bawah (network layer) untuk dikirimkan dengan <b>action udt_send(sndpkt).</b></li>
+                                </ol>
+                            </p>
+                            <p>Setelah ke-empat action itu terlaksana maka status berubah menjadi <b>Wait for 1 from below.</b></p>
+
+                            <p>Selanjutnya proses kedua yaitu pada state <b>wait for 1 from below</b>.</p>
+                            <center><img src="icon/rdtr2.png" alt=""></center>
+                            <p>Cara kerja state ini sama dengan state sebelumnya, hanya saja pada state ini sequence number yang diharapkan adalah 1. Sehingga, eventnya adalah <b>rdt_rcv(rcvpkt && notcorrupt(rcvpkt) && has_seq1(rcvpkt)</b> yang berati paket
+                                telah diterima dan paket tidak korup serta paket memiliki sequence number 1 (sesuai harapan). Lalu ada 4 tindakan yang akan dilaksanakan yaitu mengekstrak paket , mentransfer data ke upper layer, membuat paket ACK 1, dan
+                                yang terakhir mentransfer paket ke lower layer untuk dikirimkan.</p>
+
+                            <p><i>Bagaimana jika ternyata paket korup atau terdapat duplikat paket pada receiver? </i></p>
+                            <p>Maka, event yang akan terjadi adalah <b> rdt_rcv(rcvpkt && (corrupt(rcvpkt) || has_seq0(rcvpkt)).</b>Di dalam event ini terdapat dua kemungkinan yaitu, <b>rdt_rcv(rcvpkt) && (corrupt(rcvpkt))</b> yang berati paket telah diterima
+                                namun paket tersebut corrupt atau kemungkinan kedua adalah <b>rdt_rcv(rcvpkt) && has_seq0(rcvpkt))</b> yang berarti paket telah diterima namun paket memiliki sequence number 0 (padahal paket yang diharapkan memiliki sequence
+                                number 1). Kemungkinan kedua ini bisa mengindikasikan adanya duplicate packet yang diterima receiver. Baik kemungkinan pertama yang terjadi ataupun kemungkinan kedua yang terjadi, receiver akan melakukan tindakan yang sama
+                                yaitu, <b>sndpkt=make_pkt(ACK,0,checksum)</b> serta <b> udt_send(sndpkt).</b>
+                            </p>
+                            <p>Ini berarti jika paket korup atau paket terdeteksi duplikat maka penerima tidak akan mengekstrak paket, penerima hanya akan mengirimkan ACK dengan sequence number 0. Begitu pula pada state <b>Wait for 0 from below,</b>jika
+                                pada state ini paket korup atau duplikasi paket maka paket tidak akan diekstrak, lalu penerima hanya akan menigirim ack bernilai 1.</p>
+                            <p> Siklus ini akan terus berlangsung sampai pengiriman data selesai.</p>
+
+                            <br>
+                            <p>Referensi:
+                                <p> Kurose F. James, Keith W. Ross. 2005. Computer Networking. Unite States of Amerika: Pearson</p>
+                            </p>
                         </div>
                     </div>
                 </div>
