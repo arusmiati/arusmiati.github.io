@@ -73,14 +73,14 @@
                             </ol>
 
 
-                            <h4>Reliable Data Transfer (rdt) 3.0</h4>
+                            <h4>Reliable Data Transfer (rdt)</h4>
                             <p>Reliable Data Transfer (rdt) adalah suatu mekanisme TCP yang menyediakan komunikasi logis antara proses aplikasi yang berjalan pada host yang berbeda. dinamakan <b>reliabel</b> karena TCP menjamin bahwa data tersebut pasti
                                 diterima sesuai dengan yang dikirimkan. Terdapat beberapa tipe rdt yaitu <b>rdt 1.0, rdt 2.1, rdt 2.2, rdt 3.0, dll</b>. Secara dasar, rdt menggunakan protokol stop-and-wait. Mekanismenya adalah setiap mengirim paket, sender
                                 akan berhenti mengirim dan menunggu feedback dari penerima yang menandakan bahwa paket telah sampai tujuan. Namun, karena alasan jarak yang jauh, muncul berbagai versi update yang ada di rdt. </p>
 
                             <b><p>rdt3.0 = RDT over a Lossy Channel with Bit Errors</p></b>
                             <p>Pada proses rdt 3.0 pengiriman data dan ACK dilakukan secara berurutan tetapi tidak terdapat duplikasi data atau ACK seperti pada RDT 2.2. Pada versi ini, Sender dilengkapi dengan timer untuk ACK. Cara kerjanya adalah jika
-                                ACK tidak tiba, maka paket tersebut akan dikirim ulang. Jika seandainya ACK tidak hilang, namun hanya terkena delay, maka hal ini akan menyebabkan paket terduplikasi. Namun, karena adanya field untuk sequence number , maka
+                                ACK tidak tiba, maka paket tersebut akan dikirim ulang. Jika seandainya ACK tidak hilang, namun hanya terkena delay, maka hal ini akan menyebabkan paket terduplikasi. Namun, karena adanya field untuk sequence number, maka
                                 paket tidak perlu diteruskan ke lapisan aplikasi.</p>
 
                             <h4>RDT 3.0 Dari sisi SENDER (PENGIRIM)</h4>
@@ -150,8 +150,8 @@
 
                             <p>Next state yaitu <b> wait for ACK 1.</b></p>
                             <center><img src="icon/rdt3.png" alt=""></center>
-                            <p>ini mirip dengan state <b>wait for ACK 0.</b> Perbedaannya hanya terletak pada nilai sequence number yang ditunggu. Pada state ini protokol menunggu ACK dengan nilai 1. Jika ACK yang diterima ACK 0 maka status tidak akan berubah
-                                dan akan menunggu hingga timeout, jika sudah timeout maka paket akan dikirim ulang. Jika ACK yang diterima ACK 1 maka timer akan dihentikan lalu status akan berubah menjadi
+                            <p>State ini mirip dengan state <b>wait for ACK 0.</b> Perbedaannya hanya terletak pada nilai sequence number yang ditunggu. Pada state ini protokol menunggu ACK dengan nilai 1. Jika ACK yang diterima ACK 0 maka state tidak akan
+                                berubah dan akan menunggu hingga timeout, jika sudah timeout maka paket akan dikirim ulang. Jika ACK yang diterima ACK 1 maka timer akan dihentikan lalu state akan berubah menjadi
                                 <b> wait for call 0 from above.</b>
                             </p>
                             <p>Siklus ini akan terus berulang dengan cara yang sama sampai pengirimian data selesai.</p>
@@ -160,8 +160,8 @@
                             <h4> RDT 3.0 Dari sisi RECEIVER (PENERIMA)</h4>
                             <center><img src="icon/rdtr.png" alt=""></center>
                             <p>Pada dasarnya FSM protokol komunikasi dari sisi penerima pada rdt 3.0 sama dengan FSM protokol komunikasi dari sisi penerima pada rdt 2.2. perbedaan dari rdt 3.0 dan rdt 2.2 hanya terletak pada sisi pengirim saja, yaitu adanya
-                                penambahan timeout. Sedangkan sisi penerimanya tetap sama. Namun, adanya penambahan timeout pada sender side mengakibatkan adanya kemungkinan duplikat paket yang diterima receiver. Terdapat dua buah status pada FSM protokol
-                                komunikasi diatas. State <b>Wait for 0 from below </b> dan <b>state Wait for 1 from below</b> serta terdapat dua event pada masing-masing status.</p>
+                                penambahan timeout. Sedangkan sisi penerimanya tetap sama. Namun, adanya penambahan timeout pada sender side mengakibatkan adanya kemungkinan duplikat paket yang diterima receiver. Terdapat dua buah state pada FSM protokol
+                                komunikasi diatas yaitu tate <b>Wait for 0 from below </b> dan <b>state Wait for 1 from below</b> serta terdapat dua event pada masing-masing state.</p>
 
                             <p><b>Prinsip Kerja rdt 3.0 dari sisi Sender</b></p>
                             <p>Proses pertama dimulai dari state <b>wait for 0 from below</b> yang ditunjukkan oleh tanda panah putus-putus.</p>
