@@ -21,9 +21,15 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
 }
+
+.fsm {
+    margin-top: 20px;
+}
+
 .flag {
     margin-left: 33px;
 }
+
 .cn ol li {
     margin-top: 10px;
     margin-left: 35px;
@@ -488,6 +494,12 @@ nav {
 }
 
 @media (max-width: 1199px) {
+    .ul,
+    ol li,
+    ul li,
+    p {
+        text-align: justify;
+    }
     .cn h4,
     .cn p,
     .cn h2,
@@ -509,6 +521,7 @@ nav {
     .sidebar {
         width: 80px;
         position: fixed;
+        display: block;
     }
     .sidebar a i {
         color: #443653;
@@ -599,18 +612,33 @@ nav {
         display: none;
     }
     .cn img {
-        width: 250px;
-    }
-    .cn h2{
-        font-size: 35px;
+        width: 230px;
     }
     .section-title h2,
     .network-item,
     .about-content {
         margin-left: 0;
+        font-size: 18px;
     }
     .sidebar {
         position: fixed;
+    }
+    .fsm {
+        margin-top: 0px;
+    }
+    p,
+    h2,
+    .ul,
+    ul li,
+    ol li {
+        font-size: 10px;
+        text-align: justify;
+    }
+    h4 {
+        font-size: 12px;
+    }
+    .ul {
+        margin-left: 10px;
     }
 }
 
@@ -641,14 +669,33 @@ nav {
     .network-info span {
         font-size: 10px;
     }
+    .ul {
+        margin-left: 10px;
+    }
 }
 
 @media (max-width: 351px) {
     .network-item {
         margin-bottom: 20px;
     }
-    
-    .cn h2{
-        font-size: 30px;
+    .cn img {
+        width: 200px;
+    }
+    p .r {
+        text-align: left;
+    }
+    p,
+    h2,
+    .ul,
+    ul li,
+    ol li {
+        font-size: 10px;
+        text-align: justify;
+    }
+    h4 {
+        font-size: 12px;
+    }
+    .ul {
+        margin-left: 10px;
     }
 }
