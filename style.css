@@ -485,6 +485,9 @@ nav {
 .cn h4,
 .cn p {
     margin-top: 20px;
+}
+
+.cn p {
     text-align: justify;
 }
 
