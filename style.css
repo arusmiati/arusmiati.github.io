@@ -33,16 +33,16 @@ body {
 
 .cn ol li {
     margin-top: 10px;
-    margin-left: 35px;
+    margin-left: 65px;
 }
 
 .cn ol p {
-    margin-left: 35px;
+    margin-left: 65px;
     margin-top: 0px;
 }
 
 .cn ul li {
-    margin-left: 20px;
+    margin-left: 50px;
 }
 
 .cn h4,
@@ -50,6 +50,10 @@ body {
 .cn h2,
 hr {
     margin-left: 50px;
+}
+
+.cn ol li ul li {
+    margin-left: 10px;
 }
 
 .section .udp {
@@ -647,6 +651,12 @@ nav {
     }
     .ul {
         margin-left: 10px;
+    }
+    .cn ul li {
+        margin-left: 15px;
+    }
+    .cn ol li ul li {
+        margin-left: 20px;
     }
 }
 
